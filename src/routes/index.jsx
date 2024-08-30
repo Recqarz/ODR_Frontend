@@ -36,7 +36,6 @@ const routes = [
     title: "Dashboard",
     permittedUser: ["admin", "user"],
     protected: true,
-    protectedRoute: ProtectedRoute,
   },
 ];
 

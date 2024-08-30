@@ -2,8 +2,9 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, permittedUser }) => {
-  const isAuthenticated ="" /* logic to check if the user is authenticated */;
-  const userRole ="" /* logic to get the current user's role */;
+  // Temporary hardcoded values for testing
+  const isAuthenticated = true; // Change to `false` to simulate an unauthenticated user
+  const userRole = 'uaer'; // Change to test different roles
 
   if (!isAuthenticated || (permittedUser.length > 0 && !permittedUser.includes(userRole))) {
     return <Navigate to="/login" />;
