@@ -1,0 +1,20 @@
+.mainContainerWrapper {
+    height: calc(100vh - 72px);
+    overflow: hidden;
+    display: flex;
+    overflow: visible;
+  }
+  
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    background-color: var(--main-container-bg-clr);
+    transition: width 0.5s;
+    padding: 20px;
+  }
+  
+  .mainEditor {
+    padding: 0;
+    overflow: visible;
+  }
+  

@@ -2,13 +2,20 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import routes from './routes/index';
 import ProtectedRoute from './routes/ProtectedRoute';
+import PopupNotification from './pages/PopupNotification';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const  notification= useSelector((state) => state.uiActions.message)
+
   return (
+    <>
+      {notification && (
+        <PopupNotification status={notification?.status} message={notification?.message} />
+      )}
       <Routes>
         {routes.map((route, index) => {
-          console.log(`Rendering route: ${route.path}, protected: ${route.protected}`);
           if (route.protected) {
             return (
               <Route
@@ -22,7 +29,7 @@ function App() {
               />
             );
           }
-          
+
           return (
             <Route
               key={index}
@@ -32,6 +39,8 @@ function App() {
           );
         })}
       </Routes>
+    </>
+
   );
 }
 

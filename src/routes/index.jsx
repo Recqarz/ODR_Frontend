@@ -4,6 +4,8 @@ import Contact from '../pages/Contact';
 import Dashboard from '../pages/Dashboard';
 import ProtectedRoute from './ProtectedRoute';
 import Login from '../Login/Login';
+import ConsultationForm from '../components/Consultation/ConsultationForm';
+import Query from '../components/Query/Query';
 
 const routes = [
   {
@@ -29,6 +31,20 @@ const routes = [
     component: Login,
     title: "Login",
     permittedUser: [],
+  },
+  {
+    path: "/consultationForm",
+    component: ConsultationForm,
+    title: "ConsultationForm",
+    permittedUser: ["admin"],
+    protected: true,
+  },
+  {
+    path: "/query",
+    component: Query,
+    title: "Query",
+    permittedUser: ["admin"],
+    protected: true,
   },
   {
     path: "/dashboard",
