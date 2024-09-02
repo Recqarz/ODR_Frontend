@@ -87,22 +87,22 @@ const Register = () => {
         <div className="form-sec">
           <div className="left-form">
             <div className="form-box login-box">
-              <h3>Register</h3>
+              <h3>Create New Account</h3>
               <div className="register-form custom-form">
                 <Box component="form" onSubmit={handleSubmit}>
                 
                 <div className="chouse-sec">
-                    <FormLabel component="legend">Role</FormLabel>
+                    {/* <FormLabel component="legend">Role</FormLabel> */}
                     <RadioGroup row value={role} onChange={handleRoleChange}>
-                      <FormControlLabel value="user" control={<Radio />} label="User" />
-                      <FormControlLabel value="arbitory" control={<Radio />} label="Arbitory" />
+                      <FormControlLabel value="arbitrator" control={<Radio />} label="Arbitrator" />
+                      <FormControlLabel value="user" control={<Radio />} label="Client" />
                     </RadioGroup>
                 </div>
                 
                   <TextField
                     id="name"
-                    label={role === 'user' ? "Organization Name" : "Full Name"}
-                    placeholder={role === 'user' ? "Type Your Organization Name" : "Type Your Full Name"}
+                    label="Full Name"
+                    placeholder="Type Your Full Name"
                     margin="normal"
                     required
                     fullWidth
@@ -118,6 +118,25 @@ const Register = () => {
                     }}
                     variant="standard"
                   />
+                  {role === 'user' && <TextField
+                    id="org-name"
+                    label="Organization Name"
+                    placeholder="Type Your Organization Name"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="org-name"
+                    value={name}
+                    onChange={handleNameChange}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PersonOutlineIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    variant="standard"
+                  />}
                   <TextField
                     id="email"
                     label="Email Address"
@@ -188,8 +207,8 @@ const Register = () => {
                     required
                     fullWidth
                     name="retypePassword"
-                    label="Retype Password"
-                    placeholder="Retype your password"
+                    label="Confirm Password"
+                    placeholder="Confirm Your Password"
                     value={retypePassword}
                     onChange={handleRetypePasswordChange}
                     type={visibility ? "text" : "password"}

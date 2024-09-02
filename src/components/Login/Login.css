@@ -4,7 +4,8 @@
 .left-form {width: 30%;}
 .login-box {background: rgba(244, 244, 244, 0.5);padding: 2rem 2rem;border-radius: 2rem;max-width: 440px;margin: 0px auto;}
 .chouse-sec label span {font-weight: 600;font-size: 0.8rem;}
-.custom-form label {font-weight: 600; font-size: 1rem; margin-bottom: 10px;}
+.custom-form label {font-weight: 600; font-size: 1rem;}
+.custom-form .chouse-sec label {}
 .login-box label + div {padding: 10px 0px;}
 .login-box label + div input {background: none;font-size: 0.9rem;}
 .forgot-password {font-size: 0.8rem;text-align: right;}
