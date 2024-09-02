@@ -16,8 +16,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
-import { registerUser } from '../store/user-actions'; // Assume you have an action to handle registration
-import { uiActions } from '../store/uiaction-slice';
+import { registerUser } from '../../store/user-actions'; // Assume you have an action to handle registration
+import { uiActions } from '../../store/uiaction-slice';
 
 const Register = () => {
   const [visibility, setVisibility] = useState(false);

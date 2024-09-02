@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -19,10 +20,46 @@ import { IconButton, InputAdornment } from '@mui/material';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import './Login.css';
+import { isAuthentication } from '../../store/user-actions';
 
 
 const Login = () => {
     const [visivility, setVisivility] = React.useState(false) 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch(); 
+    // const history = ()
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+      };
+    
+      const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+      };
+  
+    const handleSubmit = async(e) => {
+      e.preventDefault();
+      console.log("[===")
+      if(password=='' || email ==''){
+       
+        dispatch(uiActions.showNotification({
+          status: "failure",
+          message:'Please Enter email and Password'
+        }));
+      }
+      const data = await dispatch(isAuthentication(email,password));
+      console.log(data,"===",data?.data?.data?.role)
+      if(data?.data?.data?.role=='user')
+      {
+        window.location.href = '/';
+        // history.push('/client-dashboard');
+      }
+      else{
+        if (data)  window.location.href = '/';
+          // history.push("/");
+      }
+  
+    };
   const changeIcons = () => {
     if (visivility === false) {
         setVisivility(true)
@@ -38,19 +75,21 @@ const Login = () => {
             <div className="left-form">
                 <div className="form-box login-box">
                     <h3>Login</h3>
-                    <div className="chouse-sec">
+                    {/* <div className="chouse-sec">
                         <RadioGroup row >
                             <FormControlLabel value="arbitrator" control={<Radio />} label="Arbitrator" />
                             <FormControlLabel value="client" control={<Radio />} label="Client" />
                         </RadioGroup>
-                    </div>
+                    </div> */}
                     <div className="register-form custom-form">
-                        <Box component="form">
+                        <Box component="form" onSubmit={handleSubmit}>
                             <TextField
                                 id="email" label="Email Address"
                                 placeholder='Type Your Email'
                                 size='large'
                                 margin="normal" required fullWidth name="email" autoComplete="email" autoFocus
+                                value={email}
+                                onChange={handleEmailChange}
                                 InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -68,6 +107,8 @@ const Login = () => {
                                 label="Password"
                                 placeholder='Type your password'
                                 type={visivility ? "text" : "password"} // Assuming 'visibility' is the correct variable name
+                                value={password}
+                                onChange={handlePasswordChange}
                                 InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">

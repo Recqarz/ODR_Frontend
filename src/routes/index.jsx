@@ -6,7 +6,7 @@ import Login from '../components/Login/Login';
 import ConsultationForm from '../components/Consultation/ConsultationForm';
 import ForgotPassword from '../components/Login/ForgotPassword';
 import Query from '../components/Query/Query';
-import Register from '../Login/Register';
+import Register from '../components/Login/Register';
 
 const routes = [
   {
