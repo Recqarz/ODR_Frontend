@@ -30,7 +30,8 @@ li.login-btn a:hover {background: #fff; color: #AA99E9;}
 .intro-text h1 {color: #5E17EB;font-size: 4rem;margin: 0px;line-height: 50px;margin-bottom: 30px;}
 .intro-text p {font-size: 1rem; font-weight: 500;}
 .rg-link {padding-top: 2rem;}
-.rg-btn,button.rg-btn {background: #AB9CEA; border: 1px solid #AB9CEA;padding: 0.5rem 1.5rem;border-radius: 40px;transition: all 1s ease 0s;display: inline-block;font-size: 1rem;line-height: auto; text-transform: capitalize;}
+.rg-btn,button.rg-btn {background: #AB9CEA; border: 1px solid #AB9CEA;padding: 0.5rem 1.5rem;border-radius: 40px;
+  transition: all 1s ease 0s;display: inline-block;font-size: 1rem;line-height: unset; color: #D3E1EA; text-transform: capitalize;}
 .rg-btn:hover,button.rg-btn:hover {background: none; color:#AB9CEA;}
 .left-eft,button.left-eft {position: relative;padding-left: 2.5rem;}
 .left-eft:before,button.left-eft:before {border-radius: 50%;animation: shadow-pulse 1s infinite;content: "";width: 0.75rem;height: 0.75rem;border: 1px solid #fff;position: absolute;left: 0.938rem;top: 1px;bottom: 0;margin: auto;background: #fff;}

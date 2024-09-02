@@ -7,6 +7,7 @@ import ConsultationForm from '../components/Consultation/ConsultationForm';
 import ForgotPassword from '../components/Login/ForgotPassword';
 import Query from '../components/Query/Query';
 import Register from '../components/Login/Register';
+import ResetYourPassword from '../components/Login/ResetYourPassword';
 
 const routes = [
   {
@@ -33,12 +34,12 @@ const routes = [
     title: "Login",
     permittedUser: [],
   },
-  // {
-  //   path: "/register",
-  //   component: Register,
-  //   title: "Register",
-  //   permittedUser: [],
-  // },
+  {
+    path: "/register",
+    component: Register,
+    title: "Register",
+    permittedUser: [],
+  },
   {
     path: "/forgot-password",
     component: ForgotPassword,
@@ -46,9 +47,9 @@ const routes = [
     permittedUser: [],
   },
   {
-    path: "/register",
-    component: Register,
-    title: "Register",
+    path: "/reset-your-password",
+    component: ResetYourPassword,
+    title: "Reset Your Password",
     permittedUser: [],
   },
   {

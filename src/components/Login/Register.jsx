@@ -18,6 +18,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import { registerUser } from '../../store/user-actions'; // Assume you have an action to handle registration
 import { uiActions } from '../../store/uiaction-slice';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Register = () => {
   const [visibility, setVisibility] = useState(false);
@@ -79,20 +82,23 @@ const Register = () => {
   const toggleVisibility = () => setVisibility((prevVisibility) => !prevVisibility);
 
   return (
-    <div className="register-page">
+    <div className="login-page register-page">
       <div className="bound">
         <div className="form-sec">
           <div className="left-form">
-            <div className="form-box">
+            <div className="form-box login-box">
               <h3>Register</h3>
               <div className="register-form custom-form">
                 <Box component="form" onSubmit={handleSubmit}>
-                <FormLabel component="legend">Role</FormLabel>
-
-                <RadioGroup row value={role} onChange={handleRoleChange}>
-                    <FormControlLabel value="user" control={<Radio />} label="User" />
-                    <FormControlLabel value="arbitory" control={<Radio />} label="Arbitory" />
-                  </RadioGroup>
+                
+                <div className="chouse-sec">
+                    <FormLabel component="legend">Role</FormLabel>
+                    <RadioGroup row value={role} onChange={handleRoleChange}>
+                      <FormControlLabel value="user" control={<Radio />} label="User" />
+                      <FormControlLabel value="arbitory" control={<Radio />} label="Arbitory" />
+                    </RadioGroup>
+                </div>
+                
                   <TextField
                     id="name"
                     label={role === 'user' ? "Organization Name" : "Full Name"}
@@ -103,6 +109,13 @@ const Register = () => {
                     name="name"
                     value={name}
                     onChange={handleNameChange}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PersonOutlineIcon />
+                        </InputAdornment>
+                      ),
+                    }}
                     variant="standard"
                   />
                   <TextField
@@ -118,7 +131,7 @@ const Register = () => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <PersonOutlineIcon />
+                          <MailOutlineIcon />
                         </InputAdornment>
                       ),
                     }}
@@ -134,6 +147,13 @@ const Register = () => {
                     name="mobileNumber"
                     value={mobileNumber}
                     onChange={handleMobileNumberChange}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PhoneInTalkIcon />
+                        </InputAdornment>
+                      ),
+                    }}
                     variant="standard"
                   />
                   <TextField
@@ -192,24 +212,15 @@ const Register = () => {
                     error={passwordMismatch}
                     helperText={passwordMismatch ? "Passwords do not match" : ""}
                   />
-                  <div className='register-btn'>
-                    <div className="register100-form-bgbtn"></div>
-                    <Button type="submit" fullWidth variant="contained">
-                      Register
-                    </Button>
+                  <div className='login-btn-row'>
+                    <Button className='rg-btn left-eft' type="submit">Register</Button>
                   </div>
-                  <Grid container justifyContent="flex-end">
-                    <Grid item>
-                      <Typography variant='subtitle2'>
-                        {/* <RouterLink to='/login'>Already have an account? Sign in</RouterLink> */}
-                      </Typography>
-                    </Grid>
-                  </Grid>
+                  <div className="sign-up-link">Already have an account? <RouterLink to='/login'>Login</RouterLink></div>
                 </Box>
               </div>
             </div>
           </div>
-          <div className="register-img">
+          <div className="login-img register-img">
             <img src="images/login-right.png" alt="User Img" />
           </div>
         </div>

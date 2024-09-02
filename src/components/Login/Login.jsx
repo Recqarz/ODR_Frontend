@@ -127,10 +127,10 @@ const Login = () => {
                                 autoComplete="current-password" variant="standard" 
                                 />
                             <div className="forgot-password"><RouterLink to='/forgot-password'>Forgot password?</RouterLink></div>
-                            <div className="sign-up-link">Didn’t have an account? <RouterLink to='/register'>Sign up</RouterLink></div>
-                            <div className='login-btn'>
+                            <div className='login-btn-row'>
                                 <Button className='rg-btn left-eft' type="submit">Login</Button>
                             </div>
+                            <div className="sign-up-link">Didn’t have an account? <RouterLink to='/register'>Sign up</RouterLink></div>
                         </Box>
                     
                     </div>
