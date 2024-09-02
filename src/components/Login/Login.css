@@ -1,0 +1,14 @@
+.login-page {display: flex;align-items: center;justify-content: center;min-height: 100vh;}
+.login-page .bound {max-width: 100%;padding: 0px 2%;}
+.form-sec {display: flex;}
+.left-form {width: 30%;}
+.login-box {background: rgba(244, 244, 244, 0.5);padding: 2rem 2rem;border-radius: 2rem;}
+.chouse-sec label span {font-weight: 600;font-size: 0.8rem;}
+.custom-form label {font-weight: 600; font-size: 1rem; margin-bottom: 10px;}
+.login-box label + div {padding: 10px 0px;}
+.login-box label + div input {background: none;font-size: 0.8rem;}
+.forgot-password {font-size: 0.8rem;text-align: right;}
+.sign-up-link {text-align: center;padding: 20px 0px;}
+.login-btn {text-align: center;}
+.login-img {width: 70%;text-align: center;}
+.login-img img {max-width: 500px;}

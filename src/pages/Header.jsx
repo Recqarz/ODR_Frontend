@@ -106,7 +106,7 @@ export default function Header() {
                         <li><Link to="/">For Arbitrators</Link></li>
                         <li><Link to="/">For NBFCs</Link></li>
                         <li className='book-c'><Link to="/">Book Consultation</Link></li>
-                        <li className='login-btn'><Link to="/">Register/Login</Link></li>
+                        <li className='login-btn'><Link to="/login">Register/Login</Link></li>
                     </ul>
                 </Box>
 
@@ -163,8 +163,8 @@ export default function Header() {
                         </Box>
                     {search}
                     <Box className="menu-btn">
-                        <Link className="rg-btn left-eft">Login</Link>
-                        <Link className="rg-btn left-eft">Register</Link>
+                        <Link to="/login" className="rg-btn left-eft">Login</Link>
+                        <Link to="/register" className="rg-btn left-eft">Register</Link>
                     </Box>
                 </Box>
                 </Drawer>

@@ -2,9 +2,9 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Dashboard from '../pages/Dashboard';
-import ProtectedRoute from './ProtectedRoute';
-import Login from '../Login/Login';
+import Login from '../components/Login/Login';
 import ConsultationForm from '../components/Consultation/ConsultationForm';
+import ForgotPassword from '../components/Login/ForgotPassword';
 import Query from '../components/Query/Query';
 
 const routes = [
@@ -30,6 +30,18 @@ const routes = [
     path: "/login",
     component: Login,
     title: "Login",
+    permittedUser: [],
+  },
+  // {
+  //   path: "/register",
+  //   component: Register,
+  //   title: "Register",
+  //   permittedUser: [],
+  // },
+  {
+    path: "/forgot-password",
+    component: ForgotPassword,
+    title: "ForgotPassword",
     permittedUser: [],
   },
   {
