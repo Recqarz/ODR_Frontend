@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.0.1",
     "@mui/material": "^6.0.1",
+    "@cashfreepayments/cashfree-js": "^1.0.5",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.5",
     "react": "^18.3.1",

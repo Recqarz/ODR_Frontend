@@ -1,0 +1,93 @@
+
+import { userActions } from "./user-slice";
+import axiosInstance from "../helper/AxiosInstance";
+import { uiActions } from "./uiaction-slice";
+
+export const isAuthentication = (username, password) => {
+    return async (dispatch) => {
+        try {
+            const data = await axiosInstance.post('/user/login', {
+                email: username,
+                password: password,
+                
+            });
+
+            await localStorage.setItem("accessToken", data.data.data.accessToken)
+            await localStorage.setItem("user", btoa(JSON.stringify(data.data.data.role)))
+
+            await dispatch(userActions.getUserData(data.data.data));
+            await dispatch(userActions.setRole(data.data.data.role));
+            return data
+
+        } catch (error) {
+            dispatch(uiActions.showNotification(
+                {
+                    status: "failure",
+                    message: error?.response?.data?.message || error?.message
+                }
+
+            ))
+        }
+    };
+}
+export const getUserDetails = () => {
+    return async (dispatch) => {
+      try {
+        const data = JSON.parse(atob(localStorage.getItem("user")));
+
+        dispatch(userActions.setRole(data));
+      } catch (setRole) {
+        dispatch(uiActions.showNotification(
+            {
+                status: "failure",
+                message: 'Please Login again'
+            }
+
+        ))
+
+      } 
+    };
+  };
+
+export const logout = () => {
+    return async (dispatch) => {
+      try {
+        await localStorage.clear();
+        dispatch(userActions.setRole(''));
+        dispatch(userActions.logoutUser(''));
+        
+        return true
+      } catch (setRole) {
+        dispatch(uiActions.showNotification(
+            {
+                status: "failure",
+                message: 'Please Login again'
+            }
+
+        ))
+
+      } 
+    };
+  };
+export const registerUser = (body) => {
+  return async (dispatch) => {
+    try {
+      const data = await axiosInstance.post("/user/register", body);
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          message: data.data.message,
+        })
+      );
+      return true;
+    } catch (error) {
+      dispatch(uiActions.showNotification(
+        {
+            status: "failure",
+            message: error?.response?.data?.message || error?.message
+        }
+
+    ))
+    } 
+  };
+};
