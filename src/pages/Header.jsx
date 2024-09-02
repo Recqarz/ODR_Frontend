@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -22,6 +22,8 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../store/user-actions";
 
 const StyledSearch = styled("div")(({ theme }) => ({
   position: "relative",
@@ -81,7 +83,7 @@ const search = (
 export default function Header() {
     //react useState hook to save the current open/close state of the drawer, normally variables dissapear afte the function was executed
     const [open, setState] = useState(false);
-  
+    const role = useSelector(state => state.user.role) || JSON.parse(atob(localStorage.getItem("user") || "") || null);
     //function that is being called every time the drawer should open or close, the keys tab and shift are excluded so the user can focus between the elements with the keys
     const toggleDrawer = (open) => (event) => {
       if (
@@ -93,6 +95,14 @@ export default function Header() {
       //changes the function state according to the value of open
       setState(open);
     };
+    const history = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleLogout = async (e) => {
+      e.preventDefault()
+      const allClear = await dispatch(logout())
+      if (allClear) history('/login');
+  }
   
     return (
         <div className="header">
@@ -106,7 +116,12 @@ export default function Header() {
                         <li><Link to="/">For Arbitrators</Link></li>
                         <li><Link to="/">For NBFCs</Link></li>
                         <li className='book-c'><Link to="/">Book Consultation</Link></li>
-                        <li className='login-btn'><Link to="/login">Register/Login</Link></li>
+                        { !role ? <li className='login-btn'><Link to="/login">Register/Login</Link></li>:
+                          <button onClick={(e) => handleLogout(e)}>
+                            <li  className='login-btn'>Logout</li>
+                          </button> 
+
+                          }
                     </ul>
                 </Box>
 
