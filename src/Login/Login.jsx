@@ -1,143 +1,113 @@
-// src/components/Login.jsx
-import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { isAuthentication } from '../../store/user-actions';
+import React from 'react'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+
+
+
+
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { IconButton, InputAdornment } from '@mui/material';
+import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import './Login.css';
 
-// import { uiActions } from '../../store/uiaction-slice';
-import { useNavigate } from 'react-router-dom';
-// import { FaRegEye } from "react-icons/fa";
-// import { FaRegEyeSlash } from "react-icons/fa";
-// import { requestForToken } from '../../firebase/firebaseConfig';
 
-
-const Login = () => { 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const dispatch = useDispatch(); 
-  const history = useNavigate()
-
-  const handleSubmit = async(e) => {}
-  //   e.preventDefault();
-  //   if(password=='' || email ==''){
-     
-  //     dispatch(uiActions.showNotification({
-  //       status: "failure",
-  //       message:'Please Enter email and Password'
-  //     }));
-  //   }
-  //   const token = await requestForToken()
-  //   // const data = await dispatch(isAuthentication(email,password,token));
-  //   if(data?.data?.data?.role=='user')
-  //   {
-  //     window.location.href = '/client-dashboard';
-  //     // history.push('/client-dashboard');
-  //   }
-  //   else{
-  //     if (data)  window.location.href = '/';
-  //       // history.push("/");
-  //   }
-
-  // };
-  const [visivility, setVisivility] = React.useState(false)
+const Login = () => {
+    const [visivility, setVisivility] = React.useState(false) 
   const changeIcons = () => {
     if (visivility === false) {
-      setVisivility(true)
-    } else {
-      setVisivility(false)
+        setVisivility(true)
+        } else {
+        setVisivility(false)
+        }
     }
-  }
   return (
     <>
-        <div className='login-page overlay'>
-        <div className="login-box modal- custom-modal upload-popup login-container-">
-          {/* <div className="logo mb-4"><img src="/images/logo.png" alt="Logo" /></div> */}
-          <input type="checkbox" id="flip" />
-          <div className="cover">
-            <div className="front">
-              <img src="/images/frontImg.jpg" alt="" />
-              <div className="text">
-                <span className="text-1">Every new friend is a <br /> new adventure</span>
-                <span className="text-2">Let's get connected</span>
-              </div>
+    <div className="login-page">
+        <div className="bound">
+            <div className="form-sec">
+            <div className="left-form">
+                <div className="form-box">
+                <h3>Login</h3>
+                <div className="chouse-sec">
+                    <RadioGroup row >
+                        <FormControlLabel value="arbitrator" control={<Radio />} label="Arbitrator" />
+                        <FormControlLabel value="client" control={<Radio />} label="Client" />
+                    </RadioGroup>
+                </div>
+                <div className="register-form custom-form">
+                <Box component="form">
+                    <TextField
+                        id="email" label="Email Address"
+                        placeholder='Type Your Email'
+                        size='large'
+                        margin="normal" required fullWidth name="email" autoComplete="email" autoFocus
+                        InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                            <PersonOutlineIcon />
+                            </InputAdornment>
+                        ),
+                        }}
+                        variant="standard"
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        placeholder='Type your password'
+                        type={visivility ? "text" : "password"} // Assuming 'visibility' is the correct variable name
+                        InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                            <HttpsOutlinedIcon />
+                            </InputAdornment>
+                        ),
+                        endAdornment: (
+                            <InputAdornment position="end">
+                            <IconButton onClick={changeIcons}>
+                                {visivility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                            </InputAdornment>
+                        ),
+                        }}
+                        id="password"
+                        autoComplete="current-password"
+                        variant="standard"
+                    />
+                    <div className='login-btn'>
+                        <div className="login100-form-bgbtn"></div>
+                        <Button type="submit" fullWidth variant="contained" >Sign In</Button>
+                    </div>
+                    <Grid container>
+                        <Grid item xs>
+                        <Typography variant='subtitle2'>
+                            {/* <RouterLink to='/ResetwithOTP'>Forgot password?</RouterLink> */}
+                        </Typography>
+                        </Grid>
+                    </Grid>
+                    </Box>
+                
+                </div>
+                </div>
             </div>
-            <div className="back">
-              <img className="backImg" src="/images/backImg.jpg" alt="" />
-              <div className="text">
-                <span className="text-1">Complete miles of journey <br /> with one step</span>
-                <span className="text-2">Let's get started</span>
-              </div>
+            <div className="login-img">
+                <img src="images/login-right.png" alt="User Img" />
             </div>
-          </div>
-          <div className="forms">
-            <div className="form-content">
-              <div className="login-form">
-              <div className="logo mb-4"><img src="/images/logo.png" alt="Logo" /></div>
-                <div className="title">Login</div>
-                <form onSubmit={handleSubmit}>
-                  <div className="input-boxes">
-                    {/* <div className="mb-4">
-                      <h1 className="text-primary">Welcome</h1>
-                      <p className="text-muted">Sign in to continue to portal.</p>
-                    </div> */}
-                    <div className="mb-4 input-box">
-                      {/* <label className="block mb-2">Email</label> */}
-                      <i className="fas fa-envelope"></i>
-                      <input type="email" className="w-full" placeholder="Type Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className="mb-4 input-box passw">
-                      {/* <label className="block mb-2">Password</label> */}
-                      <i className="fas fa-lock"></i>
-                      <input type={visivility ? "text" : "password"} className="w-full" placeholder="Type your password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                      <span className='show-pass' onClick={changeIcons}>
-                        {visivility ? <></> :<></> }
-                      </span>
-                    </div>
-                    <div className="text"><a href="#">Forgot password?</a></div>
-                    <div className="btn-row- button input-box">
-                      {/* <input type="submit" value="Sumbit" /> */}
-                      <button type="submit" className="btn blue-button">Login</button>
-                      
-                    </div>
-                    <div className="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
-                  </div>
-                </form>
-              </div>
-              <div className="signup-form">
-              <div className="logo mb-4"><img src="/images/logo.png" alt="Logo" /></div>
-                <div className="title">Signup</div>
-                <form action="#">
-                    <div className="input-boxes">
-                      <div className="input-box">
-                        <i className="fas fa-user"></i>
-                        <input type="text" placeholder="Enter your name" required />
-                      </div>
-                      <div className="input-box">
-                        <i className="fas fa-envelope"></i>
-                        <input type="text" placeholder="Enter your email" required />
-                      </div>
-                      <div className="input-box passw">
-                        <i className="fas fa-lock"></i>
-                        <input type={visivility ? "text" : "password"} placeholder="Enter your password" required />
-                        <span className='show-pass' onClick={changeIcons}>
-                          {visivility ? <></>: <></>}
-                        </span>
-                      </div>
-                      <div className="button input-box">
-                        {/* <input type="submit" value="Sumbit" /> */}
-                        <button type="submit" className="btn blue-button">Signup</button> 
-                      </div>
-                      <div className="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
-                    </div>
-                </form>
-              </div>
             </div>
-          </div>
-          
         </div>
-      </div>
+    </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
