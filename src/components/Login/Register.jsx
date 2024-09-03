@@ -88,13 +88,13 @@ const Register = () => {
           <div className="left-form">
             <div className="form-box login-box">
               <h3>Create New Account</h3>
-              <div className="register-form custom-form">
+              <div className="register-form custom-form-">
                 <Box component="form" onSubmit={handleSubmit}>
                 
                 <div className="chouse-sec">
                     {/* <FormLabel component="legend">Role</FormLabel> */}
                     <RadioGroup row value={role} onChange={handleRoleChange}>
-                      <FormControlLabel value="arbitrator" control={<Radio />} label="Arbitrator" />
+                      <FormControlLabel value="arbitory" control={<Radio />} label="Arbitrator" />
                       <FormControlLabel value="user" control={<Radio />} label="Client" />
                     </RadioGroup>
                 </div>
@@ -118,7 +118,7 @@ const Register = () => {
                     }}
                     variant="standard"
                   />
-                  {role === 'user' && <TextField
+                  {role === 'client' && <TextField
                     id="org-name"
                     label="Organization Name"
                     placeholder="Type Your Organization Name"

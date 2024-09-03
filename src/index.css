@@ -38,7 +38,7 @@ li.login-btn a:hover {background: #fff; color: #AA99E9;}
 .rg-btn:hover:before,button.rg-btn:hover:before {background: #AB9CEA;}
 /* .intro-img img {max-width: 400px;} */
 
-/* .h3 {font-size: 30px;margin: 0px 0px 15px;color: #5E17EB;} 
+.h3 {font-size: 30px;margin: 0px 0px 15px;color: #5E17EB;} 
 .arbit-sec {margin-bottom: 40px;}
 .arbit-sec h3 {}
 .arbit-box {background: rgba(244, 244, 244, 0.5);padding: 2rem 1rem 2rem 2rem;display: flex;gap: 20px;align-items: center;justify-content: space-between;border-radius: 2rem;}
@@ -46,7 +46,7 @@ li.login-btn a:hover {background: #fff; color: #AA99E9;}
 .arbit-text p {font-size: 1rem; font-weight: 500;}
 
 .right-aero {position: relative;padding-right: 4rem;}
-.right-aero svg {background: #000;color: #fff;border-radius: 20px;position: absolute;font-size: 1.4rem; right: 10px;}
+.right-aero svg {background: #000;color: #fff;border-radius: 20px;position: absolute;font-size: 1.4rem; right: 10px;top: 10px;}
 
 .land-footer {padding: 2rem 2rem 7rem;background: #fff;border-radius: 2rem 2rem 0 0;display: flex;}
 .land-footer > div {width: 50%;}
@@ -57,10 +57,10 @@ li.login-btn a:hover {background: #fff; color: #AA99E9;}
 .foot-right ul li {list-style: none;padding-bottom: 8px;}
 .foot-right ul li:last-child{margin-bottom: 0px;}
 .foot-right ul li a{color: #3E3E3E; font-weight: 500;}
-.foot-right ul li a:hover {color: #5E17EB;} */
+.foot-right ul li a:hover {color: #5E17EB;}
 
 @media (max-width:767px){
-html {font-size: 14px;}
+/* html {font-size: 14px;}
 .intro-sec,.arbit-box,.land-footer {display: inline-block; width: 100%;padding: 2rem;box-sizing: border-box;}
 .intro-text h1 {font-size: 3rem;}
 .intro-text,.arbit-text {max-width: 100%;}
@@ -70,7 +70,7 @@ html {font-size: 14px;}
 .arbit-sec {margin-bottom: 0px;padding-bottom: 30px;}
 .land-footer > div {display: inline-block;width: 100%;}
 .address {max-width: 100%;padding-bottom: 10px;} 
-.foot-col1 {padding-top: 1rem;border-top: 1px solid #ccc;margin-top: 2rem;}
+.foot-col1 {padding-top: 1rem;border-top: 1px solid #ccc;margin-top: 2rem;} */
 
 /* For Mobile Menu */
 .menu-btn {display: flex;

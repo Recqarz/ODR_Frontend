@@ -16,7 +16,7 @@ const ForgotPassword = () => {
                 <div className="form-box login-box">
                     <div className="lock-icon"><LockPersonIcon /></div>
                     <h3 style={{textAlign:"center"}}>Forgot password?</h3>
-                    <div className="register-form custom-form">
+                    <div className="register-form custom-form-">
                         <Box component="form">
                             <p style={{textAlignLast:"center"}}>Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.</p>
                             <TextField

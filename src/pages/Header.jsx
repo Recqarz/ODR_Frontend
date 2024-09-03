@@ -117,37 +117,23 @@ export default function Header() {
                         <li><Link to="/">For NBFCs</Link></li>
                         <li className='book-c'><Link to="/">Book Consultation</Link></li>
                         { !role ? <li className='login-btn'><Link to="/login">Register/Login</Link></li>:
-                          <button onClick={(e) => handleLogout(e)}>
-                            <li  className='login-btn'>Logout</li>
-                          </button> 
-
+                          <li  className='login-btn'><Link onClick={(e) => handleLogout(e)}>Logout</Link></li> 
                           }
                     </ul>
                 </Box>
 
-                <IconButton edge="start"
+                {/* <IconButton edge="start"
                     color="inherit"
                     aria-label="open drawer"
                     onClick={toggleDrawer(true)}
                     sx={{mr: 2, display: {xs: "block", sm: "none" }
                 }} >
                     <MenuIcon />
-                </IconButton>
+                </IconButton> */}
 
                 {/* The outside of the drawer */}
-                <Drawer
-                //from which side the drawer slides in
-                anchor="right"
-                //if open is true --> drawer is shown
-                open={open}
-                //function that is called when the drawer should close
-                onClose={toggleDrawer(false)}
-                //function that is called when the drawer should open
-                onOpen={toggleDrawer(true)}
-                >
-                {/* The inside of the drawer */}
-                <Box
-                    sx={{
+                <Drawer anchor="right" open={open} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
+                <Box sx={{
                     p: 2,
                     height: 1,
                     backgroundColor: "#dbc8ff"
@@ -178,8 +164,11 @@ export default function Header() {
                         </Box>
                     {search}
                     <Box className="menu-btn">
-                        <Link to="/login" className="rg-btn left-eft">Login</Link>
-                        <Link to="/register" className="rg-btn left-eft">Register</Link>
+                    { !role ? <Link to="/login" className="rg-btn left-eft">Login</Link>:
+                      <Link className="rg-btn left-eft" onClick={(e) => handleLogout(e)}>Logout</Link>
+                      }
+                    { !role ? <Link to="/register" className="rg-btn left-eft">Register</Link>:<></>  }
+                        
                     </Box>
                 </Box>
                 </Drawer>

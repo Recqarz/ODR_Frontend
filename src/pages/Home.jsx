@@ -18,7 +18,7 @@ function Home() {
                   with expert arbitrators and mediators. Access fair resolutions quickly 
                   and easily, anytime, anywhere, without the hassle of traditional court 
                   proceedings. Simplify dispute resolution with Resolve24x7.</p>
-                  <div className="rg-link"><Link to="/" className="rg-btn left-eft">Register Now</Link></div>
+                  <div className="rg-link"><Link to="/register" className="rg-btn left-eft">Register Now</Link></div>
             </div>
             <div className="intro-img">
               <img className='land-ses' src="images/intro-img.png" alt="Intro Img" />
@@ -34,7 +34,7 @@ function Home() {
                 deliver fair, unbiased decisions, ensuring a transparent process for 
                 all parties involved. Join us in making dispute resolution faster and 
                 more accessible.</p>
-                <div className='rg-link register-btn'><Link to="/" className="rg-btn right-aero">Register <KeyboardArrowRightIcon /></Link></div>
+                <div className='rg-link register-btn'><Link to="/register" className="rg-btn right-aero">Register <KeyboardArrowRightIcon /></Link></div>
 
               </div>
               <div className="arbit-img">
@@ -42,7 +42,7 @@ function Home() {
               </div>
             </div>
           </div>
-          {/* <div className="arbit-sec client-sec pb-40">
+          <div className="arbit-sec client-sec pb-40">
             <h3 className='h3'>For Client</h3>
             <div className="arbit-box">
               <div className="arbit-text">
@@ -52,14 +52,14 @@ function Home() {
                 deliver fair, unbiased decisions, ensuring a transparent process for 
                 all parties involved. Join us in making dispute resolution faster and 
                 more accessible.</p>
-                <div className='rg-link register-btn'><Link to="/" className="rg-btn right-aero">Register <KeyboardArrowRightIcon /></Link></div>
+                <div className='rg-link register-btn'><Link to="/register" className="rg-btn right-aero">Register <KeyboardArrowRightIcon /></Link></div>
 
               </div>
               <div className="arbit-img">
                 <img className='land-ses' src="images/arbit-img.png" alt="Arbitrator" />
               </div>
             </div>
-          </div> */}
+          </div>
           <Footer/>
 
         </div>
