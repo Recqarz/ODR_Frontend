@@ -5,6 +5,8 @@ import Header from './Header';
 import Footer from './Footer';
 
 function Home() {
+  console.log('dfghj');
+  
   return (
     <>
       <div className="home">

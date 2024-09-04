@@ -1,20 +1,21 @@
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
-import Dashboard from '../pages/Dashboard';
-import Login from '../components/Login/Login';
-import ConsultationForm from '../components/Consultation/ConsultationForm';
 import ForgotPassword from '../components/Login/ForgotPassword';
-import Query from '../components/Query/Query';
 import Register from '../components/Login/Register';
 import ResetYourPassword from '../components/Login/ResetYourPassword';
+import Navbar from '../components/Dashboard/Navbar';
+import Arbitrator from '../components/Dashboard/Users/Arbitrator';
+import Login from '../components/Login/Login';
+
 
 const routes = [
   {
     path: "/",
     component: Home,
     title: "Home",
-    permittedUser: [],
+    permittedUser: ['admin'],
+    protected:true
   },
   {
     path: "/about",
@@ -53,23 +54,34 @@ const routes = [
     permittedUser: [],
   },
   {
-    path: "/consultationForm",
-    component: ConsultationForm,
-    title: "ConsultationForm",
-    permittedUser: ["admin"],
-    protected: true,
+    path: "/register",
+    component: Register,
+    title: "Register",
+    permittedUser: [],
   },
   {
-    path: "/query",
-    component: Query,
-    title: "Query",
+    path: "/forgot-password",
+    component: ForgotPassword,
+    title: "ForgotPassword",
+    permittedUser: [],
+  },
+  {
+    path: "/reset-your-password",
+    component: ResetYourPassword,
+    title: "Reset Your Password",
+    permittedUser: [],
+  },
+  {
+    path: "/arbitrator",
+    component: Arbitrator,
+    title: "Arbitrator",
     permittedUser: ["admin"],
     protected: true,
   },
   {
     path: "/dashboard",
-    component: Dashboard,
-    title: "Dashboard",
+    component: Navbar,
+    title: "Navbar",
     permittedUser: ["admin", "user"],
     protected: true,
   },

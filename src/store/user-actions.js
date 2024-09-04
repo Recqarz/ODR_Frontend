@@ -30,6 +30,7 @@ export const isAuthentication = (username, password) => {
         }
     };
 }
+
 export const getUserDetails = () => {
     return async (dispatch) => {
       try {
@@ -89,5 +90,28 @@ export const registerUser = (body) => {
 
     ))
     } 
+  };
+};
+
+
+// Async action to fetch all users with pagination and user type filtering
+export const getAllUsers = (page = 1, limit = 10, userType = '') => {
+  return async (dispatch) => {
+      dispatch(userActions.getAllUserDataStart());
+      dispatch(uiActions.toggleLoader());
+
+      try {
+          const response = await axiosInstance.get(`/user/all/?page=${page}&limit=${limit}&user=${userType}`);
+          // console.log(response.data.data.users)
+          dispatch(userActions.getAllUserDataSuccess(response.data.data));
+      } catch (error) {
+          dispatch(userActions.getAllUserDataFailure(error?.response?.data?.message || error?.message));
+          dispatch(uiActions.showNotification({
+              status: "failure",
+              message: error?.response?.data?.message || error?.message
+          }));
+      } finally {
+          dispatch(uiActions.toggleLoader());
+      }
   };
 };
