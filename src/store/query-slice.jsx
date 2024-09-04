@@ -16,7 +16,7 @@ const querySlice = createSlice({
             state.error = null;
         },
         fetchQuerySuccess(state, action) {
-            state.query = action.payload;
+            state.queries = action.payload;
             state.loading = false;
         },
         fetchQueryFailure(state, action) {
