@@ -118,7 +118,8 @@ const Register = () => {
                     }}
                     variant="standard"
                   />
-                  {role === 'client' && <TextField
+                  {/* {role === 'user' && } */}
+                  <TextField
                     id="org-name"
                     label="Organization Name"
                     placeholder="Type Your Organization Name"
@@ -136,7 +137,7 @@ const Register = () => {
                       ),
                     }}
                     variant="standard"
-                  />}
+                  />
                   <TextField
                     id="email"
                     label="Email Address"

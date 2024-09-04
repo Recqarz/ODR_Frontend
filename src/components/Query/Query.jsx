@@ -84,7 +84,10 @@ const Query = () => {
                                 // labelId="demo-simple-select"
                                 // id="demo-simple-select"
                                 value={formData.category} label="Select Category"
-                                name="category" value={formData.category} onChange={handleChange} required >
+                                name="category" 
+                                //value={formData.category} 
+                                onChange={handleChange} required 
+                                >
                                 <MenuItem value={"Category 1"}>Category 1</MenuItem>
                                 <MenuItem value={"Category 2"}>Category 2</MenuItem>
                                 <MenuItem value={"Category 3"}>3</MenuItem>

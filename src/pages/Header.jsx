@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Link as ScrollLink } from 'react-scroll';
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+
 
 //drawer elements used
 import Drawer from "@mui/material/Drawer";
@@ -103,20 +105,36 @@ export default function Header() {
       const allClear = await dispatch(logout())
       if (allClear) history('/login');
   }
-  
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    };
+}, []);
+  const handleScroll = () => {
+    var scroll = window.scrollY;
+    // Check if the user has scrolled beyond a certain point (e.g., 300 pixels)
+    if (scroll >= 100) {
+        setIsScrolled(true);
+    } else {
+        setIsScrolled(false);
+    }
+};
     return (
-        <div className="header">
+        <div className={`header ${isScrolled ? "fix-header" : ""}`}>
+          <div className="bound">
             <div className="nav">
-                <div className="logo">Logo</div>
+                <div className="logo"><Link to="/">Logo</Link></div>
                 <Box className="main-menu" component="div" sx={{display: {xs: "none", sm: "block" }
                 }} >
                 {/* {search} */}
                     <ul>
                         <li className='active'><Link to="/">Home</Link></li>
-                        <li><Link to="/">For Arbitrators</Link></li>
-                        <li><Link to="/">For NBFCs</Link></li>
+                        <li><ScrollLink to="for-arbitrator" smooth={true} duration={500} activeClass="active" spy={true} offset={-80}>For Arbitrators</ScrollLink></li>
+                        <li><ScrollLink to="for-client" smooth={true} duration={500} activeClass="active" spy={true} offset={-120}>For Client</ScrollLink></li>
                         <li className='book-c'><Link to="/">Book Consultation</Link></li>
-                        { !role ? <li className='login-btn'><Link to="/login">Register/Login</Link></li>:
+                        { !role ? <li className='login-btn'><Link to="/login">Login</Link></li>:
                           <li  className='login-btn'><Link onClick={(e) => handleLogout(e)}>Logout</Link></li> 
                           }
                     </ul>
@@ -155,7 +173,7 @@ export default function Header() {
 
                             <ListItemButton>
                                 <ListItemIcon><FolderIcon sx={{ color: "primary.main" }} /></ListItemIcon>
-                                <ListItemText primary="For NBFCs" />
+                                <ListItemText primary="For Client" />
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon><FolderIcon sx={{ color: "primary.main" }} /></ListItemIcon>
@@ -173,6 +191,7 @@ export default function Header() {
                 </Box>
                 </Drawer>
             </div>
+          </div>
         </div>
     );
   }

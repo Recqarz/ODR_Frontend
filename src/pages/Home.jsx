@@ -8,9 +8,10 @@ function Home() {
   return (
     <>
       <div className="home">
+        <Header />
         <div className="bound">
-          <Header />
-          <div className="intro-sec pb-40">
+          
+          <div className="intro-sec pb-40" id='intro-text'>
             <div className="intro-text">
               <h1>Introduction</h1>
               <p>Welcome to Resolve24x7, your efficient Online Dispute Resolution 
@@ -18,13 +19,13 @@ function Home() {
                   with expert arbitrators and mediators. Access fair resolutions quickly 
                   and easily, anytime, anywhere, without the hassle of traditional court 
                   proceedings. Simplify dispute resolution with Resolve24x7.</p>
-                  <div className="rg-link"><Link to="/register" className="rg-btn left-eft">Register Now</Link></div>
+                  {/* <div className="rg-link"><Link to="/register" className="rg-btn left-eft">Register Now</Link></div> */}
             </div>
             <div className="intro-img">
               <img className='land-ses' src="images/intro-img.png" alt="Intro Img" />
             </div>
           </div>
-          <div className="arbit-sec pb-40">
+          <div className="arbit-sec pb-40" id='for-arbitrator'>
             <h3 className='h3'>For Arbitrator</h3>
             <div className="arbit-box">
               <div className="arbit-text">
@@ -42,7 +43,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="arbit-sec client-sec pb-40">
+          <div className="arbit-sec client-sec pb-40" id='for-client'>
             <h3 className='h3'>For Client</h3>
             <div className="arbit-box">
               <div className="arbit-text">

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { Link as ScrollLink } from 'react-scroll';
 
 const Footer = () => {
   return (
@@ -17,9 +18,9 @@ const Footer = () => {
                 <div className="foot-col1">
                     <h3>Company</h3>
                     <ul>
-                    <li><Link to="/">Introduction</Link></li>
-                    <li><Link to="/">For Arbitrator</Link></li>
-                    <li><Link to="/">For Client</Link></li>
+                    <li><ScrollLink to="intro-text" smooth={true} duration={500}>Introduction</ScrollLink></li>
+                    <li><ScrollLink to="for-arbitrator" smooth={true} duration={500} offset={-80}>For Arbitrator</ScrollLink></li>
+                    <li><ScrollLink to="for-client" smooth={true} duration={500} offset={-120}>For Client</ScrollLink></li>
                     <li><Link to="/querys">Raise a Ticket</Link></li>
                     <li><Link to="/">Book Consultation</Link></li>
                     </ul>
