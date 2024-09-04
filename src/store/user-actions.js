@@ -118,7 +118,31 @@ export const getAllUsers = (page = 1, limit = 10, userType = '') => {
 export const forgotPassword = (body, userId, hash) => {
   return async (dispatch) => {
     try {
-      const data = await axiosInstance.post(`/user//verify/${userId}/${hash}`, body);
+      const data = await axiosInstance.post(`/user/verify/${userId}/${hash}`, body);
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          message: data.data.message,
+        })
+      );
+      return true;
+    } catch (error) {
+      dispatch(uiActions.showNotification(
+        {
+            status: "failure",
+            message: error?.response?.data?.message || error?.message
+        }
+
+    ))
+    } 
+  };
+};
+
+export const getForgotPasswordLink = (email) => {
+  return async (dispatch) => {
+    try {
+      console.log(email,'===')
+      const data = await axiosInstance.post(`/user/forget`, {email:email});
       dispatch(
         uiActions.showNotification({
           status: "success",

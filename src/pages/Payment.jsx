@@ -16,7 +16,7 @@ const Payment = () => {
 
   const doPayment = async () => {
       let checkoutOptions = {
-          paymentSessionId: session,
+          paymentSessionId: session, 
           redirectTarget: "_modal",
       };
       cashfree.checkout(checkoutOptions).then((result) => {
