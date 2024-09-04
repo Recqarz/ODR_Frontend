@@ -8,11 +8,19 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../../store/uiaction-slice';
+import { forgotPassword } from '../../store/user-actions';
 
 const ResetYourPassword = () => {
+    const dispatch = useDispatch(); 
+
     const [password, setPassword] = useState('');
     const [retypePassword, setRetypePassword] = useState('');
     const [visibility, setVisibility] = useState(false);
+    const { userId, hash } = useParams();
+
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
         setPasswordMismatch(retypePassword && e.target.value !== retypePassword);
@@ -23,6 +31,18 @@ const ResetYourPassword = () => {
       };
       const toggleVisibility = () => setVisibility((prevVisibility) => !prevVisibility);
       const [passwordMismatch, setPasswordMismatch] = useState(false);
+
+      const handleSubmit = async (e) =>{
+        e.preventDefault();
+        if(password != retypePassword || password ==""){
+            dispatch(uiActions.showNotification({
+              status: "failure",
+              message:'Please reEnter the same  pass'
+            }));
+          }
+          const data = await dispatch(forgotPassword({password}, userId, hash));
+
+      }
   return (
     <>
     <div className="login-page fp-page">
@@ -33,7 +53,7 @@ const ResetYourPassword = () => {
                     <div className="lock-icon"><LockOpenIcon /></div>
                     <h3 style={{textAlign:"center"}}>Reset Your Password</h3>
                     <div className="register-form custom-form">
-                        <Box component="form">
+                        <Box component="form" onSubmit={handleSubmit}>
                             <p style={{textAlignLast:"center"}}>Enter your new password below to regain access to your account.</p>
                             <TextField
                                 margin="normal"

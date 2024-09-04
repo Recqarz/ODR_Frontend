@@ -8,6 +8,7 @@ import Navbar from '../components/Dashboard/Navbar';
 import Arbitrator from '../components/Dashboard/Users/Arbitrator';
 import Login from '../components/Login/Login';
 
+import Payment from '../pages/Payment';
 
 const routes = [
   {
@@ -48,7 +49,7 @@ const routes = [
     permittedUser: [],
   },
   {
-    path: "/reset-your-password",
+    path: "/reset-your-password/:userId/:hash",
     component: ResetYourPassword,
     title: "Reset Your Password",
     permittedUser: [],
@@ -84,6 +85,12 @@ const routes = [
     title: "Navbar",
     permittedUser: ["admin", "user"],
     protected: true,
+  },
+  {
+    path: "/gateway",
+    component: Payment,
+    title: "Payment",
+    permittedUser: [],
   },
 ];
 

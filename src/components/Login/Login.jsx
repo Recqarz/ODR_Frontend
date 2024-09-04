@@ -28,7 +28,6 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch(); 
-    // const history = ()
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
       };
@@ -39,7 +38,6 @@ const Login = () => {
   
     const handleSubmit = async(e) => {
       e.preventDefault();
-      console.log("[===")
       if(password=='' || email ==''){
        
         dispatch(uiActions.showNotification({
@@ -48,7 +46,6 @@ const Login = () => {
         }));
       }
       const data = await dispatch(isAuthentication(email,password));
-      console.log(data,"===",data?.data?.data?.role)
       if(data?.data?.data?.role=='user')
       {
         window.location.href = '/';

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { load } from "@cashfreepayments/cashfree-js";
+import axiosInstance from '../helper/AxiosInstance';
 
 
-const Payment = () => {
+const Payment = () => { 
 
+    const [session , setSession] = useState("")
   let cashfree;
   var initializeSDK = async function () {          
       cashfree = await load({
@@ -14,7 +16,7 @@ const Payment = () => {
 
   const doPayment = async () => {
       let checkoutOptions = {
-          paymentSessionId: "session_o5OnmXUry2nY3LtY9quMqt0CvHbs_ySCaRECG0owdphZU5Udy-XMMq1020vlzsHXB5C_bx3Ry5rr23YUPK5ObrX4pbFrrwmPtwp3HtaoRmIx",
+          paymentSessionId: session,
           redirectTarget: "_modal",
       };
       cashfree.checkout(checkoutOptions).then((result) => {
@@ -36,11 +38,18 @@ const Payment = () => {
           }
       });
   };
+  const getOrderId = async ()=>{
+    const data = await axiosInstance.post('/gateway/order',{ orderAmount:1000, customerEmail:"Anies", customerPhone:"9090407361" })
+    setSession(data.data.data.payment_session_id)
+  }
 
 
   return (
         <div class="row">
             <p>Click below to open the checkout page in popup</p>
+            <button type="submit" class="btn btn-primary" id="renderBtn" onClick={getOrderId}>
+                CreateOrder
+            </button>
             <button type="submit" class="btn btn-primary" id="renderBtn" onClick={doPayment}>
                 Pay Now
             </button>
