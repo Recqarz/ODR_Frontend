@@ -27,6 +27,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [organizationName, setOrganizationName] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [mobileNumber, setMobileNumber] = useState(''); // Mobile number state
@@ -38,6 +39,7 @@ const Register = () => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
+  const handleOrganizationNameChange = (e) => setOrganizationName(e.target.value);
   const handleMobileNumberChange = (e) => setMobileNumber(e.target.value); // Handle mobile number change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -52,7 +54,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !name || !mobileNumber || !password || !retypePassword || !role) {
+    if (!email || !name || !organizationName || !mobileNumber || !password || !retypePassword || !role) {
       dispatch(uiActions.showNotification({
         status: "failure",
         message: 'Please fill out all fields',
@@ -69,7 +71,7 @@ const Register = () => {
     }
 
     try {
-      const data = await dispatch(registerUser({  email, name, mobile:mobileNumber, password, role }));
+      const data = await dispatch(registerUser({  email, name, organizationName,  mobile:mobileNumber, password, role }));
       if (data) {
         navigate('/login'); // Redirect to login page after successful registration
       }
@@ -127,8 +129,8 @@ const Register = () => {
                     required
                     fullWidth
                     name="org-name"
-                    value={name}
-                    onChange={handleNameChange}
+                    value={organizationName}
+                    onChange={handleOrganizationNameChange}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">

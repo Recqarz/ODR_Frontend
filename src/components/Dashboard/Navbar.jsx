@@ -46,6 +46,7 @@ import { Link } from "react-router-dom";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { logout } from "../../store/user-actions";
 
 const drawerWidth = 240;
 
@@ -190,9 +191,8 @@ const DrawerLists2 = [
         text: "Log out",
         icons: <LogoutIcon />,
         navigate: "/logout",
-        className:"logout"
+        className:"logout",
     },
-  
 ];
 
 
@@ -214,9 +214,13 @@ export default function Navbar() {
     const [currentBar, setCurrentBar] = useState('/dashboard')
     const dispatch = useDispatch()
 
-    // const handleToggle = (item) => {
-    //     setOpenItem((prevOpenItem) => (prevOpenItem === item ? null : item));
-    // };
+    const history = useNavigate()
+
+    const handleLogout = async (e) => {
+    //   e.preventDefault()
+      const allClear = await dispatch(logout())
+      if (allClear) history('/logout');
+  }
 
     const handleToggle = (itemText) => {
         setOpenItem(openItem === itemText ? null : itemText);
@@ -268,15 +272,7 @@ export default function Navbar() {
                                 onClick={handleOpenUserMenu}
                                 sx={{ marginLeft: "auto", p: 0 }}
                             >
-                                {/* <Avatar
-                                    sx={{
-                                        backgroundColor: "#9c27b0",
-                                        transition: "transform 0.5s ease",
-                                        "&:hover": { transform: "scale(1.2)" },
-                                    }}
-                                    alt={username}
-                                    src="/static/images/avatar/2.jpg"
-                                /> */}
+                               
                                 <div className="user-icon">
                                     <PersonOutlineIcon  />
                                 </div>
@@ -390,7 +386,9 @@ export default function Navbar() {
                             <div key={ind} id={className}  className={activeClass == text ? "active" : ""}>
                                 <ListItem
                                     disablePadding
-                                    onClick={() => (subItems ? handleToggle(text) : handleNavigate(navigate,text))}
+                                    onClick={() =>
+                                        text === "Log out" ? handleLogout() : subItems ? handleToggle(text) : handleNavigate(navigate, text)
+                                    }
                                 >
                                     <ListItemButton
                                         sx={{
