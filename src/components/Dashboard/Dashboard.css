@@ -1,0 +1,19 @@
+header.top-bar {background: #DCEDFD;}
+.user-icon {width: 40px;height: 40px;background: #AB9CEA;border-radius: 50%;display: flex;align-items: center;justify-content: center;color: #fff;}
+.left-side > .MuiDrawer-paper {background: #DCEDFD;}
+.top-sec .p-title {text-transform: capitalize;color: #121212; font-size: 1rem;font-weight: 500;}
+.breadcrumb {display: flex;justify-content: space-between;color: #374151;background: #F8F8F8;margin:0px 0px 15px;padding: 10px 15px 10px 0px;border-radius: 5px;}
+.breadcrumb ol {display: flex;padding: 0px;margin: 0px;}
+.breadcrumb ol li {display: flex;padding-left: 15px;cursor: pointer;align-items: center;}
+.breadcrumb ol li > div a, .breadcrumb ol li > div {display: flex;align-items: center; text-transform: capitalize;}
+.breadcrumb ol li > div svg {width: 1.5rem;padding-right: 15px;}
+.breadcrumb ol li.home > div svg {padding-right: 0px;color: #374151;}
+
+table.user-table {border-spacing: 0 10px;border-collapse: separate;padding: 0px 15px;}
+table.user-table tbody tr {background: #EEF7FE;}
+table.user-table tbody tr td {border-top: 1px solid #000; border-bottom:  1px solid #000;}
+table.user-table tbody tr td:first-child{border-left: 1px solid #000;}
+table.user-table tbody tr td:last-child{border-right: 1px solid #000;}
+
+ul.satting-menu {position: absolute;bottom: 20px;width: 100%;}
+.left-side .active {background: #D3E1EA;}

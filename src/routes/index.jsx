@@ -7,8 +7,10 @@ import ResetYourPassword from '../components/Login/ResetYourPassword';
 import Navbar from '../components/Dashboard/Navbar';
 import Arbitrator from '../components/Dashboard/Users/Arbitrator';
 import Login from '../components/Login/Login';
+import Query from '../components/Query/Query';
 
 import Payment from '../pages/Payment';
+import ConsultationForm from '../components/Consultation/ConsultationForm';
 
 const routes = [
   {
@@ -78,6 +80,20 @@ const routes = [
     title: "Arbitrator",
     permittedUser: ["admin"],
     protected: true,
+  },
+  {
+    path: "/query",
+    component: Query,
+    title: "Raise A Ticket",
+    permittedUser: [],
+    protected: false,
+  },
+  {
+    path: "/book-consultation",
+    component: ConsultationForm,
+    title: "Book Consultation",
+    permittedUser: [],
+    protected: false,
   },
   {
     path: "/dashboard",

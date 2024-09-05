@@ -137,6 +137,7 @@ export default function Header() {
                         { !role ? <li className='login-btn'><Link to="/login">Login</Link></li>:
                           <li  className='login-btn'><Link onClick={(e) => handleLogout(e)}>Logout</Link></li> 
                           }
+                        {/* <li className='login-btn-'><Link to="/login" className="rg-btn left-eft">Login</Link></li> */}
                     </ul>
                 </Box>
 

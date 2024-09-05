@@ -48,11 +48,11 @@ const Login = () => {
       const data = await dispatch(isAuthentication(email,password));
       if(data?.data?.data?.role=='user')
       {
-        window.location.href = '/';
+        window.location.href = '/dashboard';
         // history.push('/client-dashboard');
       }
       else{
-        if (data)  window.location.href = '/';
+        if (data)  window.location.href = '/dashboard';
           // history.push("/");
       }
   

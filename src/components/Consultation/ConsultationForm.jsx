@@ -4,7 +4,7 @@ import { createConsultation } from '../../store/consultation-action';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 
-const MultiStepForm = () => {
+const ConsultationForm = () => {
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         name: '',
@@ -339,4 +339,5 @@ const MultiStepForm = () => {
     );
 };
 
-export default MultiStepForm;
+export default ConsultationForm;
+

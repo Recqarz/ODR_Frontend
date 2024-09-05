@@ -42,6 +42,10 @@ import Cases from "./Cases";
 import Meetings from "./Meetings";
 import Tickets from "./Tickets";
 import Documents from "./Documents";
+import { Link } from "react-router-dom";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -118,6 +122,7 @@ const DrawerLists = [
         text: "Dashboard",
         icons: <HomeIcon />,
         navigate: "/dashboard",
+        className:"active"
     },
     {
         text: "Users",
@@ -136,32 +141,61 @@ const DrawerLists = [
             },
         ],
     },
-    {
-        text: "Cases",
-        icons: <CaseIcon />,
-        navigate: "/cases",
-    },
-    {
-        text: "Meetings",
-        icons: <MeetingIcon />,
-        navigate: "/meetings",
-    },
-    {
-        text: "Documents",
-        icons: <DocumentIcon />,
-        navigate: "/documents",
-    },
-    {
-        text: "Tickets",
-        icons: <TicketIcon />,
-        navigate: "/tickets",
-    },
-    {
-        text: "Consultation Requests",
-        icons: <ConsultationIcon />,
-        navigate: "/consultationrequests",
-    },
+    // {
+    //     text: "Cases",
+    //     icons: <CaseIcon />,
+    //     navigate: "/cases",
+    // },
+    // {
+    //     text: "Meetings",
+    //     icons: <MeetingIcon />,
+    //     navigate: "/meetings",
+    // },
+    // {
+    //     text: "Documents",
+    //     icons: <DocumentIcon />,
+    //     navigate: "/documents",
+    // },
+    // {
+    //     text: "Tickets",
+    //     icons: <TicketIcon />,
+    //     navigate: "/tickets",
+    // },
+    // {
+    //     text: "Consultation Requests",
+    //     icons: <ConsultationIcon />,
+    //     navigate: "/consultationrequests",
+    // },
 ];
+
+const DrawerLists2 = [
+    {
+        text: "Settings",
+        icons: <SettingsIcon />,
+        // navigate: "/users",
+        subItems: [
+            {
+                text: "Settings 1",
+                icons: <SettingsIcon />,
+                navigate: "/#",
+            },
+            {
+                text: "Settings 2",
+                icons: <SettingsIcon />,
+                navigate: "/#",
+            },
+        ],
+    },
+    {
+        text: "Log out",
+        icons: <LogoutIcon />,
+        navigate: "/logout",
+        className:"logout"
+    },
+  
+];
+
+
 
 
 // Assuming settings is an array of objects with 'text' and 'action' properties
@@ -175,6 +209,8 @@ export default function Navbar() {
     const open = useSelector((state) => state.drawer.isOpen)
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [openItem, setOpenItem] = useState(null);
+    const [activeClass, setActiveClass] = useState('');
+
     const [currentBar, setCurrentBar] = useState('/dashboard')
     const dispatch = useDispatch()
 
@@ -186,8 +222,9 @@ export default function Navbar() {
         setOpenItem(openItem === itemText ? null : itemText);
     };
 
-    const handleNavigate = (navigate) => {
+    const handleNavigate = (navigate,text) => {
         setCurrentBar(navigate)
+        setActiveClass(text)
     };
 
     const handleDrawerOpenClose = () => {
@@ -210,7 +247,8 @@ export default function Navbar() {
         <>
             <Box sx={{ display: "flex" }}>
                 <AppBar className="top-bar" position="fixed" open={open}>
-                    <Toolbar>
+                    <Toolbar className="top-sec">
+                        
                         <IconButton
                             color="#1E201F"
                             aria-label="open drawer"
@@ -223,14 +261,14 @@ export default function Navbar() {
                         >
                             <MenuIcon />
                         </IconButton>
-
+                        <Typography className="p-title" variant="h5">{currentBar.split("/")[1]}</Typography>
                         {/* ============== profile ========= */}
                         <Tooltip title="Open settings">
                             <IconButton
                                 onClick={handleOpenUserMenu}
                                 sx={{ marginLeft: "auto", p: 0 }}
                             >
-                                <Avatar
+                                {/* <Avatar
                                     sx={{
                                         backgroundColor: "#9c27b0",
                                         transition: "transform 0.5s ease",
@@ -238,7 +276,11 @@ export default function Navbar() {
                                     }}
                                     alt={username}
                                     src="/static/images/avatar/2.jpg"
-                                />
+                                /> */}
+                                <div className="user-icon">
+                                    <PersonOutlineIcon  />
+                                </div>
+                                
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -270,7 +312,7 @@ export default function Navbar() {
                 </AppBar>
                 <Drawer className="left-side" variant="permanent" open={open}>
                     <DrawerHeader className="proj-title">
-                        <Typography variant="h5">भारत</Typography>
+                        <Typography variant="h5">भारत ODR</Typography>
                         <IconButton onClick={handleDrawerOpenClose}>
                             {theme.direction === "rtl" ? (
                                 <ChevronRightIcon />
@@ -281,11 +323,74 @@ export default function Navbar() {
                     </DrawerHeader>
 
                     <List className="list-item">
-                        {DrawerLists.map(({ text, icons, navigate, subItems }, ind) => (
-                            <div key={ind}>
+                        {DrawerLists.map(({ text, icons, navigate, subItems, className }, ind) => (
+                            <div key={ind} id={className} className={activeClass == text ? "active" : ""}>
                                 <ListItem
                                     disablePadding
-                                    onClick={() => (subItems ? handleToggle(text) : handleNavigate(navigate))}
+                                    onClick={() => (subItems ? handleToggle(text) : handleNavigate(navigate,text))}
+                                >
+                                    <ListItemButton
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: "initial",
+                                            px: 2.5,
+                                        }}
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: 0,
+                                                mr: 3,
+                                                justifyContent: "center",
+                                            }}
+                                        >
+                                            {icons}
+                                        </ListItemIcon>
+                                        <ListItemText  primary={text}/>
+                                        {subItems ? (openItem === text ? <ExpandLess /> : <ExpandMore />) : null}
+                                    </ListItemButton>
+                                </ListItem>
+                                {subItems && (
+                                    <Collapse in={openItem === text} timeout="auto" unmountOnExit>
+                                        <List component="div" disablePadding>
+                                            {subItems.map(({ text, icons, navigate }, subInd) => (
+                                                <ListItem
+                                                    key={subInd}
+                                                    disablePadding
+                                                    className={activeClass == text ? "active" : ""}
+                                                    onClick={() => handleNavigate(navigate,text)}
+                                                >
+                                                    <ListItemButton
+                                                        sx={{
+                                                            pl: 4,
+                                                            minHeight: 40,
+                                                            justifyContent: "initial",
+                                                        }}
+                                                    >
+                                                        <ListItemIcon
+                                                            sx={{
+                                                                minWidth: 0,
+                                                                mr: 3,
+                                                                justifyContent: "center",
+                                                            }}
+                                                        >
+                                                            {icons}
+                                                        </ListItemIcon>
+                                                        <ListItemText primary={text} />
+                                                    </ListItemButton>
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </Collapse>
+                                )}
+                            </div>
+                        ))}
+                    </List>
+                    <List className="list-item satting-menu">
+                        {DrawerLists2.map(({ text, icons, navigate, subItems, className }, ind) => (
+                            <div key={ind} id={className}  className={activeClass == text ? "active" : ""}>
+                                <ListItem
+                                    disablePadding
+                                    onClick={() => (subItems ? handleToggle(text) : handleNavigate(navigate,text))}
                                 >
                                     <ListItemButton
                                         sx={{
@@ -314,7 +419,7 @@ export default function Navbar() {
                                                 <ListItem
                                                     key={subInd}
                                                     disablePadding
-                                                    onClick={() => handleNavigate(navigate)}
+                                                    onClick={() => handleNavigate(navigate,text)}
                                                 >
                                                     <ListItemButton
                                                         sx={{
@@ -342,10 +447,27 @@ export default function Navbar() {
                             </div>
                         ))}
                     </List>
-                    <Typography variant="h6">JAI SHREE RAM</Typography>
+                    {/* <Typography variant="h6">JAI SHREE RAM</Typography> */}
                 </Drawer>
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                
                     <DrawerHeader />
+                    <div className="breadcrumb hover-eft-">
+                        <ol>
+                            <li className="home">
+                                <div><Link to="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#374151">
+                                    <path fillRule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clipRule="evenodd" ></path></svg>
+                                </Link>
+                                </div>
+                            </li>
+                            <li>User 
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 44"><path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path></svg> 
+                                <span>{currentBar.split("/")[1]}</span>
+                            </li>
+                        </ol>
+                    </div>
                     {currentBar == '/dashboard' &&
                         <Dashboard />
                     }
