@@ -11,6 +11,7 @@ import Query from '../components/Query/Query';
 
 import Payment from '../pages/Payment';
 import ConsultationForm from '../components/Consultation/ConsultationForm';
+import Logout from '../components/Login/Logout';
 
 const routes = [
   {
@@ -72,6 +73,12 @@ const routes = [
     path: "/reset-your-password",
     component: ResetYourPassword,
     title: "Reset Your Password",
+    permittedUser: [],
+  },
+  {
+    path: "/logout",
+    component: Logout,
+    title: "Logout",
     permittedUser: [],
   },
   {

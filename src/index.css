@@ -64,6 +64,8 @@ div#for-arbitrator {padding-top: 50px;}
 .foot-right ul li a{color: #3E3E3E; font-weight: 500;cursor: pointer;}
 .foot-right ul li a:hover {color: #5E17EB;}
 
+.logout .intro-text h1 {font-size: 2rem;}
+
 @media (max-width:767px){
 /* html {font-size: 14px;}
 .intro-sec,.arbit-box,.land-footer {display: inline-block; width: 100%;padding: 2rem;box-sizing: border-box;}
