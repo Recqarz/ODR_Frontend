@@ -12,11 +12,17 @@ import { getAllUsers } from '../../../store/user-actions';
 
 
 const columns = [
+    { id: 'id', label: 'ID', minWidth: 170 },
     { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'organizationName', label: 'Org Name', minWidth: 170 },
-    { id: 'email', label: 'Email', minWidth: 170 },
     { id: 'mobile', label: 'Mobile', minWidth: 100 },
-    { id: 'role', label: 'Role', minWidth: 100 },
+    { id: 'email', label: 'Email ID', minWidth: 170 },
+    { id: 'number-of-case', label: 'No. Of  Assign Case', minWidth: 170 },
+    { id: 'status', label: 'Status', minWidth: 170 },
+    { id: 'action', label: 'Action', minWidth: 170 },
+    // { id: 'organizationName', label: 'Org Name', minWidth: 170 },
+    // { id: 'role', label: 'Role', minWidth: 100 },
+    
+    
 ];
 
 const Arbitrator = () => {

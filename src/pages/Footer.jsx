@@ -21,8 +21,8 @@ const Footer = () => {
                     <li><ScrollLink to="intro-text" smooth={true} duration={500}>Introduction</ScrollLink></li>
                     <li><ScrollLink to="for-arbitrator" smooth={true} duration={500} offset={-80}>For Arbitrator</ScrollLink></li>
                     <li><ScrollLink to="for-client" smooth={true} duration={500} offset={-120}>For Client</ScrollLink></li>
-                    <li><Link to="/querys">Raise a Ticket</Link></li>
-                    <li><Link to="/">Book Consultation</Link></li>
+                    <li><Link to="/query">Raise a Ticket</Link></li>
+                    <li><Link to="/book-consultation">Book Consultation</Link></li>
                     </ul>
                 </div>
                 <div className="foot-col1">

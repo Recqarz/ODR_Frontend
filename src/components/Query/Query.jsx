@@ -6,6 +6,8 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import {ButtonGroup, FormControl, InputLabel, MenuItem, Paper, Select, Typography, } from "@mui/material";
+import Header from '../../pages/Header';
+import Footer from '../../pages/Footer';
 
 const Query = () => {
     const dispatch = useDispatch()
@@ -32,8 +34,11 @@ const Query = () => {
 
     return (
         <>
-        <div className="login-page">
+        <div className="query-page">
+            <Header />
             <div className="bound">
+            <h3 className='h3 m-t20'>Raise A Ticket</h3>
+            <p>Need assistance or have an issue to report? Simply fill out the form, and we’ll get back to you as soon as possible!</p>
                 <div className="form-sec">
                 <div className="left-form">
                     <div className="form-box login-box">
@@ -131,6 +136,7 @@ const Query = () => {
                     <img src="images/Raise-Ticket.png" alt="Raise a Ticket" />
                 </div>
                 </div>
+                <Footer />
             </div>
         </div>
    </> );

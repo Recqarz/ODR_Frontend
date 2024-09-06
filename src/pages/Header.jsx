@@ -26,6 +26,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/user-actions";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const StyledSearch = styled("div")(({ theme }) => ({
   position: "relative",
@@ -133,9 +134,9 @@ export default function Header() {
                         <li className='active'><Link to="/">Home</Link></li>
                         <li><ScrollLink to="for-arbitrator" smooth={true} duration={500} activeClass="active" spy={true} offset={-80}>For Arbitrators</ScrollLink></li>
                         <li><ScrollLink to="for-client" smooth={true} duration={500} activeClass="active" spy={true} offset={-120}>For Client</ScrollLink></li>
-                        <li className='book-c'><Link to="/">Book Consultation</Link></li>
-                        { !role ? <li className='login-btn'><Link to="/login">Login</Link></li>:
-                          <li  className='login-btn'><Link onClick={(e) => handleLogout(e)}>Logout</Link></li> 
+                        <li className='book-c'><Link to="/book-consultation">Book Consultation</Link></li>
+                        { !role ? <li className='login-btn-'><Link to="/login" className="rg-btn left-eft">Login</Link></li>:
+                          <li  className='login-btn-'><Link title="Logout" onClick={(e) => handleLogout(e)}><LogoutIcon /></Link></li> 
                           }
                         {/* <li className='login-btn-'><Link to="/login" className="rg-btn left-eft">Login</Link></li> */}
                     </ul>

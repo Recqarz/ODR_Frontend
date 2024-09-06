@@ -18,7 +18,7 @@ a {text-decoration: none;transition: all 1s ease 0s;}
 .nav {border-bottom: 3px solid #AA99E9;display: flex;justify-content: space-between;padding: 50px 0px 20px;}
 .fix-header .nav {border-bottom: 0px;}
 .logo {color: #5E17EB;font-size: 2rem;line-height: 22px;font-weight: 700;}
-.main-menu ul {padding: 0px;margin: 0px;display: flex;gap: 2rem;}
+.main-menu ul {padding: 0px;margin: 0px;display: flex;gap: 2rem;align-items: center;}
 .main-menu ul li {list-style: none;}
 .main-menu ul li a {color: #3C3C3C;font-weight: 500;cursor: pointer;}
 .main-menu ul li a:hover,.main-menu ul li.active a {color: #5E17EB;}
@@ -44,7 +44,7 @@ div#for-arbitrator {padding-top: 50px;}
 /* .intro-img img {max-width: 400px;} */
 
 .h3 {font-size: 30px;margin: 0px 0px 15px;color: #5E17EB;} 
-.arbit-sec {margin-bottom: 40px;}
+.arbit-sec {margin-top: 40px;}
 .arbit-sec h3 {}
 .arbit-box {background: rgba(244, 244, 244, 0.5);padding: 2rem 1rem 2rem 2rem;display: flex;gap: 20px;align-items: center;justify-content: space-between;border-radius: 2rem;}
 .arbit-text {max-width: 50%;}
@@ -53,7 +53,7 @@ div#for-arbitrator {padding-top: 50px;}
 .right-aero {position: relative;padding-right: 4rem;}
 .right-aero svg {background: #000;color: #fff;border-radius: 20px;position: absolute;font-size: 1.4rem; right: 10px;top: 10px;}
 
-.land-footer {padding: 2rem 2rem 7rem;background: #fff;border-radius: 2rem 2rem 0 0;display: flex;}
+.land-footer {padding: 2rem 2rem 7rem;background: #fff;border-radius: 2rem 2rem 0 0;display: flex;margin-top: 60px;}
 .land-footer > div {width: 50%;}
 .address {max-width: 50%;padding-bottom: 30px;}
 .address strong {padding-bottom: 10px; display: inline-block;}
@@ -65,6 +65,7 @@ div#for-arbitrator {padding-top: 50px;}
 .foot-right ul li a:hover {color: #5E17EB;}
 
 .logout .intro-text h1 {font-size: 2rem;}
+.m-t20 {margin-top: 20px;}
 
 @media (max-width:767px){
 /* html {font-size: 14px;}

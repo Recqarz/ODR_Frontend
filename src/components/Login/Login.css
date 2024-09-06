@@ -17,11 +17,14 @@
 .lock-icon svg {border: 1px solid #000; padding: 10px;font-size: 4rem;border-radius: 50%;}
 
 /* Query Page css */
-/* .custom-form form > div {margin-bottom: 20px;}
-.custom-form form label {font-weight: 500;} */
+.custom-form form > div {margin-bottom: 20px;}
+.custom-form form label {font-weight: 500;}
+.query-page .left-form {width: 50%;}
+.query-page .login-img {width: 50%;justify-content: right;}
+.query-page .login-box {max-width: 100%;}
 
 /* consult-form */
-/* .consult-form {display: flex;width: 100%;}
+.consult-form {display: flex;width: 100%;}
 .consult-form .steps {width: 33.33%;padding: 2rem;border-right: 2px solid #aaa;position: relative;padding-bottom: 80px;}
 .consult-form .steps:last-child {border-right:0px;}
 .steps h3 {display: flex;justify-content: space-between;font-size: 1rem;margin: 0px 0px 15px;color: #5E17EB;}
@@ -33,7 +36,8 @@
 .btn-row button.left { background: #6B7280; border-color: #6B7280;}
 .btn-row button.left:hover { color: #6B7280;}
 .steps > div.btn-row {padding: 0px 2rem 0px;position: absolute;bottom: 20px;display: flex;justify-content: space-between; left: 0px;    width: 100%;}
-.btn-row button:disabled {cursor: default; pointer-events: none; opacity: 0.5;} */
+.btn-row button:disabled {cursor: default; pointer-events: none; opacity: 0.5;}
+div#lightgrey {opacity: 0.5;}
 
 @media (max-width:767px){
 /* .form-sec {display: inline-block;width: 100%;padding: 30px 0px;}

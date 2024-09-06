@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createConsultation } from '../../store/consultation-action';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import Header from '../../pages/Header';
+import Footer from '../../pages/Footer';
 
 
 const ConsultationForm = () => {
@@ -185,9 +187,12 @@ const ConsultationForm = () => {
     return (
         <>
         <div className="consult-page">
+            <Header />
             <div className="bound">
+                <h3 className='h3 m-t20'>Book Consultation</h3>
+                <p>Book a Consultation for Your Case</p>
                 <form onSubmit={handleSubmit} className='consult-form'>
-                    <div className='steps first' style={{ backgroundColor: divColors.first }}>
+                    <div className='steps first' id={divColors.first} style={{ backgroundColor: divColors.first }}>
                         <h3>
                             <span>Step 1:</span>
                             <span>Your Details</span>
@@ -243,7 +248,7 @@ const ConsultationForm = () => {
                         
                     </div>
 
-                    <div className='steps second' style={{ backgroundColor: divColors.second }}>
+                    <div className='steps second' id={divColors.second} style={{ backgroundColor: divColors.second }}>
                         <h3>
                             <span>Step 2:</span>
                             <span>Complaint Details</span>
@@ -286,7 +291,7 @@ const ConsultationForm = () => {
                         </div>                       
                     </div>
 
-                    <div className='steps third' style={{ backgroundColor: divColors.third }}>
+                    <div className='steps third' id={divColors.third} style={{ backgroundColor: divColors.third }}>
                         <h3>
                             <span>Step 3:</span>
                             <span>Defaulter Details</span>
@@ -332,6 +337,7 @@ const ConsultationForm = () => {
                         
                     </div>
                 </form>
+                <Footer />
             </div>
         </div>
         

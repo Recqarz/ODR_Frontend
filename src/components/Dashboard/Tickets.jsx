@@ -14,10 +14,11 @@ const queryColumns = [
     { id: 'name', label: 'Name', minWidth: 170 },
     { id: 'email', label: 'Email', minWidth: 170 },
     { id: 'phone', label: 'Phone', minWidth: 130 },
-    { id: 'description', label: 'Description', minWidth: 300 },
+    // { id: 'description', label: 'Description', minWidth: 300 },
     { id: 'category', label: 'Category', minWidth: 130 },
     { id: 'createdAt', label: 'Created At', minWidth: 170 },
-    { id: 'updatedAt', label: 'Updated At', minWidth: 170 },
+    // { id: 'updatedAt', label: 'Updated At', minWidth: 170 },
+    { id: 'status', label: 'Status', minWidth: 170 },
 ];
 
 const Tickets = () => {
@@ -44,8 +45,8 @@ const Tickets = () => {
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
-            <TableContainer sx={{ maxHeight: 440 }}>
-                <Table stickyHeader aria-label="sticky table">
+            <TableContainer>
+                <Table className='user-table' stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
                             {queryColumns.map((column) => (
@@ -69,7 +70,7 @@ const Tickets = () => {
                                         return (
                                             <TableCell key={column.id} align={column.align || 'left'}>
                                                 {column.id === 'createdAt' || column.id === 'updatedAt'
-                                                    ? new Date(value).toLocaleString()
+                                                    ? new Date(value).toDateString()
                                                     : value}
                                             </TableCell>
                                         );

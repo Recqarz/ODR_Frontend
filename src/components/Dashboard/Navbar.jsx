@@ -133,12 +133,12 @@ const DrawerLists = [
         subItems: [
             {
                 text: "Arbitrator",
-                icons: <ArrowRightIcon />,
+                // icons: <ArrowRightIcon />,
                 navigate: "/arbitrator",
             },
             {
                 text: "Clients",
-                icons: <ArrowRightIcon />,
+                // icons: <ArrowRightIcon />,
                 navigate: "/clients",
             },
         ],
@@ -167,6 +167,7 @@ const DrawerLists = [
         text: "Consultation Requests",
         icons: <ConsultationIcon />,
         navigate: "/consultationrequests",
+        className: "cl-request"
     },
     {
         text: "Template",
@@ -563,8 +564,10 @@ export default function Navbar() {
                             <li>User 
                             </li>
                             <li>
-                                <svg viewBox="0 0 24 44"><path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path></svg> 
-                                <span>{currentBar.split("/")[1]}</span>
+                                <div>
+                                    <svg viewBox="0 0 24 44"><path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path></svg> 
+                                    <span>{currentBar.split("/")[1]}</span>
+                                </div>
                             </li>
                         </ol>
                     </div>

@@ -7,7 +7,9 @@ header.top-bar {background: #DCEDFD;}
 .breadcrumb ol li {display: flex;padding-left: 15px;cursor: pointer;align-items: center;}
 .breadcrumb ol li > div a, .breadcrumb ol li > div {display: flex;align-items: center; text-transform: capitalize;}
 .breadcrumb ol li > div svg {width: 1.5rem;padding-right: 15px;}
+.breadcrumb ol li > div svg {width: 1.5rem;padding-right: 15px;}
 .breadcrumb ol li.home > div svg {padding-right: 0px;color: #374151;}
+
 
 table.user-table {border-spacing: 0 10px;border-collapse: separate;padding: 0px 15px;}
 table.user-table tbody tr {background: #EEF7FE;}
@@ -17,3 +19,5 @@ table.user-table tbody tr td:last-child{border-right: 1px solid #000;}
 
 ul.satting-menu {position: absolute;bottom: 20px;width: 100%;}
 .left-side .active {background: #D3E1EA;}
+.left-side div#logout, .left-side div#logout svg {color: red;}
+div#cl-request span.MuiListItemText-primary {word-break: auto-phrase;width: 100%;white-space: normal;}
