@@ -1,4 +1,5 @@
 header.top-bar {background: #DCEDFD;}
+main.MuiBox-root {width: calc(100% - 240px);}
 .user-icon {width: 40px;height: 40px;background: #AB9CEA;border-radius: 50%;display: flex;align-items: center;justify-content: center;color: #fff;}
 .left-side > .MuiDrawer-paper {background: #DCEDFD;}
 .top-sec .p-title {text-transform: capitalize;color: #121212; font-size: 1rem;font-weight: 500;}
