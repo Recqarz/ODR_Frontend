@@ -8,7 +8,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllConsultations } from '../../store/consultation-action';
+import { getAllConsultations } from '../../../store/consultation-action';
 
 
 const consultationColumns = [
