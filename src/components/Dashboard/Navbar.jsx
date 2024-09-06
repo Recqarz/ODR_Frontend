@@ -36,17 +36,18 @@ import { toggleDrawer } from "../../store/drawerSlice";
 import { useNavigate } from "react-router-dom";
 import Arbitrator from "./Users/Arbitrator";
 import Dashboard from "./Dashboard";
-import ConsultationRequests from "./ConsultationRequests";
+import ConsultationRequests from "./ConsultationRequests/ConsultationRequests";
 import Clients from "./Users/Clients";
-import Cases from "./Cases";
-import Meetings from "./Meetings";
-import Tickets from "./Tickets";
-import Documents from "./Documents";
+import Cases from "./Cases/Cases";
+import Meetings from "./Meetings/Meetings";
+import Documents from "./Documents/Documents";
 import { Link } from "react-router-dom";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logout } from "../../store/user-actions";
+import Tickets from "./Tickets/Tickets";
+import CreateTickets from "./Tickets/CreateTickets";
 
 const drawerWidth = 240;
 
@@ -351,7 +352,10 @@ export default function Navbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
+    const setAddTicket = (e) =>{
+        e.preventDefault()
+        setCurrentBar('/addtickets')
+    }
     // Get username from localStorage
     const username = localStorage.getItem("username") ? JSON.parse(localStorage.getItem("username")) : "User";
     // Assuming settings is an array of objects with 'text' and 'action' properties
@@ -576,8 +580,8 @@ export default function Navbar() {
                                 </Link>
                                 </div>
                             </li>
-                            <li>User 
-                            </li>
+                            {/* <li>User 
+                            </li> */}
                             <li>
                                 <div>
                                     <svg viewBox="0 0 24 44"><path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path></svg> 
@@ -605,7 +609,10 @@ export default function Navbar() {
                         <Meetings />
                     }
                     {currentBar == '/tickets' &&
-                        <Tickets />
+                        <Tickets setAddTicket = {setAddTicket} />
+                    }
+                    {currentBar == '/addtickets' &&
+                        <CreateTickets setCurrentBar = {setCurrentBar} />
                     }
                     {currentBar == '/consultationrequests' &&
                         <ConsultationRequests />
