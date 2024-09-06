@@ -30,6 +30,13 @@ const Query = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createQuery(formData))
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            description: '',
+            category: ''
+        });
     };
 
     return (

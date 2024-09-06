@@ -119,7 +119,7 @@ const Drawer = styled(MuiDrawer, {
 
 
 // Admin 
-const DrawerLists = [
+const adminDrawerLists = [
     {
         text: "Dashboard",
         icons: <HomeIcon />,
@@ -211,69 +211,69 @@ const DrawerLists = [
 ];
 
 // Arbitrator 
-// const DrawerLists = [
-//     {
-//         text: "Dashboard",
-//         icons: <HomeIcon />,
-//         navigate: "/dashboard",
-//         className:"active"
-//     },
-//     {
-//         text: "Cases",
-//         icons: <CaseIcon />,
-//         navigate: "/cases",
-//     },
-//     {
-//         text: "Meetings",
-//         icons: <MeetingIcon />,
-//         navigate: "/meetings",
-//     },
-//     {
-//         text: "Documents",
-//         icons: <DocumentIcon />,
-//         navigate: "/documents",
-//     },
-//     {
-//         text: "Tickets",
-//         icons: <TicketIcon />,
-//         navigate: "/tickets",
-//     },
-// ];
+const arbitratorDrawerLists = [
+    {
+        text: "Dashboard",
+        icons: <HomeIcon />,
+        navigate: "/dashboard",
+        className:"active"
+    },
+    {
+        text: "Cases",
+        icons: <CaseIcon />,
+        navigate: "/cases",
+    },
+    {
+        text: "Meetings",
+        icons: <MeetingIcon />,
+        navigate: "/meetings",
+    },
+    {
+        text: "Documents",
+        icons: <DocumentIcon />,
+        navigate: "/documents",
+    },
+    {
+        text: "Tickets",
+        icons: <TicketIcon />,
+        navigate: "/tickets",
+    },
+];
 
 // Client 
-// const DrawerLists = [
-//     {
-//         text: "Dashboard",
-//         icons: <HomeIcon />,
-//         navigate: "/dashboard",
-//         className:"active"
-//     },
-//     {
-//         text: "Cases",
-//         icons: <CaseIcon />,
-//         navigate: "/cases",
-//     },
-//     {
-//         text: "Meetings",
-//         icons: <MeetingIcon />,
-//         navigate: "/meetings",
-//     },
-//     {
-//         text: "Documents",
-//         icons: <DocumentIcon />,
-//         navigate: "/documents",
-//     },
-//     {
-//         text: "Tickets",
-//         icons: <TicketIcon />,
-//         navigate: "/tickets",
-//     },
-//     {
-//         text: "Consultation Requests",
-//         icons: <ConsultationIcon />,
-//         navigate: "/consultationrequests",
-//     },
-// ];
+const clientDrawerLists = [
+    {
+        text: "Dashboard",
+        icons: <HomeIcon />,
+        navigate: "/dashboard",
+        className:"active"
+    },
+    {
+        text: "Cases",
+        icons: <CaseIcon />,
+        navigate: "/cases",
+    },
+    {
+        text: "Meetings",
+        icons: <MeetingIcon />,
+        navigate: "/meetings",
+    },
+    {
+        text: "Documents",
+        icons: <DocumentIcon />,
+        navigate: "/documents",
+    },
+    {
+        text: "Tickets",
+        icons: <TicketIcon />,
+        navigate: "/tickets",
+    },
+    {
+        text: "Consultation Requests",
+        icons: <ConsultationIcon />,
+        navigate: "/consultationrequests",
+    },
+];
 
 const DrawerLists2 = [
     {
@@ -301,12 +301,7 @@ const DrawerLists2 = [
     },
 ];
 
-// Assuming settings is an array of objects with 'text' and 'action' properties
-const settings = [
-    { text: "Profile", action: () => console.log("Profile clicked") },
-    { text: "Account", action: () => console.log("Account clicked") },
-    { text: "Logout", action: () => console.log("Logout clicked") },
-];
+
 export default function Navbar() {
     const theme = useTheme();
     const open = useSelector((state) => state.drawer.isOpen)
@@ -316,13 +311,24 @@ export default function Navbar() {
 
     const [currentBar, setCurrentBar] = useState('/dashboard')
     const dispatch = useDispatch()
+    const role = useSelector(state => state.user.role) || JSON.parse(atob(localStorage.getItem("user") || "") || null);
+    let DrawerLists
+    if (role=='user') {
+         DrawerLists = clientDrawerLists
+    }
+    else if (role=='admin'){
+        DrawerLists = adminDrawerLists
+    }
+    else{
+        DrawerLists = arbitratorDrawerLists
 
+    }
     const history = useNavigate()
 
     const handleLogout = async (e) => {
     //   e.preventDefault()
       const allClear = await dispatch(logout())
-      if (allClear) history('/logout');
+      if (allClear) history('/');
   }
 
     const handleToggle = (itemText) => {
@@ -348,7 +354,16 @@ export default function Navbar() {
 
     // Get username from localStorage
     const username = localStorage.getItem("username") ? JSON.parse(localStorage.getItem("username")) : "User";
-
+    // Assuming settings is an array of objects with 'text' and 'action' properties
+    const settings = [
+        { text: "Profile", action: () => console.log("Profile clicked") },
+        { text: "Account", action: () => console.log("Account clicked") },
+        { text: "Logout", action: async() => {
+            const allClear = await dispatch(logout())
+            if (allClear) history('/');
+                console.log("Logout clicked")} 
+            },
+    ];
 
     return (
         <>
