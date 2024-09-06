@@ -18,8 +18,8 @@ const routes = [
     path: "/",
     component: Home,
     title: "Home",
-    permittedUser: ['admin'],
-    protected:true
+    permittedUser: [],
+    protected:false
   },
   {
     path: "/about",
@@ -106,7 +106,7 @@ const routes = [
     path: "/dashboard",
     component: Navbar,
     title: "Navbar",
-    permittedUser: ["admin", "user"],
+    permittedUser: ["admin", "user", "arbitory"],
     protected: true,
   },
   {

@@ -20,6 +20,7 @@ table.user-table tbody tr td:first-child{border-left: 1px solid #000;}
 table.user-table tbody tr td:last-child{border-right: 1px solid #000;}
 
 /* ul.satting-menu {position: absolute;bottom: 20px;width: 100%;} */
+ul.satting-menu {position: absolute;bottom: 20px;width: 100%;}
 .left-side .active {background: #D3E1EA;}
 .left-side div#logout, .left-side div#logout svg {color: red;}
 div#cl-request span.MuiListItemText-primary {word-break: auto-phrase;width: 100%;white-space: normal;}
