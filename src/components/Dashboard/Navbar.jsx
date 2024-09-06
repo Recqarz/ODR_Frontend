@@ -118,6 +118,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 
+// Admin 
 const DrawerLists = [
     {
         text: "Dashboard",
@@ -142,32 +143,136 @@ const DrawerLists = [
             },
         ],
     },
-    // {
-    //     text: "Cases",
-    //     icons: <CaseIcon />,
-    //     navigate: "/cases",
-    // },
-    // {
-    //     text: "Meetings",
-    //     icons: <MeetingIcon />,
-    //     navigate: "/meetings",
-    // },
-    // {
-    //     text: "Documents",
-    //     icons: <DocumentIcon />,
-    //     navigate: "/documents",
-    // },
-    // {
-    //     text: "Tickets",
-    //     icons: <TicketIcon />,
-    //     navigate: "/tickets",
-    // },
-    // {
-    //     text: "Consultation Requests",
-    //     icons: <ConsultationIcon />,
-    //     navigate: "/consultationrequests",
-    // },
+    {
+        text: "Cases",
+        icons: <CaseIcon />,
+        navigate: "/cases",
+    },
+    {
+        text: "Meetings",
+        icons: <MeetingIcon />,
+        navigate: "/meetings",
+    },
+    {
+        text: "Documents",
+        icons: <DocumentIcon />,
+        navigate: "/documents",
+    },
+    {
+        text: "Tickets",
+        icons: <TicketIcon />,
+        navigate: "/tickets",
+    },
+    {
+        text: "Consultation Requests",
+        icons: <ConsultationIcon />,
+        navigate: "/consultationrequests",
+    },
+    {
+        text: "Template",
+        icons: <PeopleIcon />,
+        // navigate: "/users",
+        subItems: [
+            {
+                text: "Email",
+                // icons: <ArrowRightIcon />,
+                navigate: "/arbitrator",
+            },
+            {
+                text: "PDF",
+                // icons: <ArrowRightIcon />,
+                navigate: "/clients",
+            },
+        ],
+    },
+    {
+        text: "Master",
+        icons: <PeopleIcon />,
+        // navigate: "/users",
+        subItems: [
+            {
+                text: "Industry",
+                // icons: <ArrowRightIcon />,
+                navigate: "/arbitrator",
+            },
+            {
+                text: "Variable",
+                // icons: <ArrowRightIcon />,
+                navigate: "/clients",
+            },
+            {
+                text: "Notice",
+                // icons: <ArrowRightIcon />,
+                navigate: "/clients",
+            },
+        ],
+    },
 ];
+
+// Arbitrator 
+// const DrawerLists = [
+//     {
+//         text: "Dashboard",
+//         icons: <HomeIcon />,
+//         navigate: "/dashboard",
+//         className:"active"
+//     },
+//     {
+//         text: "Cases",
+//         icons: <CaseIcon />,
+//         navigate: "/cases",
+//     },
+//     {
+//         text: "Meetings",
+//         icons: <MeetingIcon />,
+//         navigate: "/meetings",
+//     },
+//     {
+//         text: "Documents",
+//         icons: <DocumentIcon />,
+//         navigate: "/documents",
+//     },
+//     {
+//         text: "Tickets",
+//         icons: <TicketIcon />,
+//         navigate: "/tickets",
+//     },
+// ];
+
+// Client 
+// const DrawerLists = [
+//     {
+//         text: "Dashboard",
+//         icons: <HomeIcon />,
+//         navigate: "/dashboard",
+//         className:"active"
+//     },
+//     {
+//         text: "Cases",
+//         icons: <CaseIcon />,
+//         navigate: "/cases",
+//     },
+//     {
+//         text: "Meetings",
+//         icons: <MeetingIcon />,
+//         navigate: "/meetings",
+//     },
+//     {
+//         text: "Documents",
+//         icons: <DocumentIcon />,
+//         navigate: "/documents",
+//     },
+//     {
+//         text: "Tickets",
+//         icons: <TicketIcon />,
+//         navigate: "/tickets",
+//     },
+//     {
+//         text: "Consultation Requests",
+//         icons: <ConsultationIcon />,
+//         navigate: "/consultationrequests",
+//     },
+// ];
 
 const DrawerLists2 = [
     {
@@ -194,9 +299,6 @@ const DrawerLists2 = [
         className:"logout",
     },
 ];
-
-
-
 
 // Assuming settings is an array of objects with 'text' and 'action' properties
 const settings = [
