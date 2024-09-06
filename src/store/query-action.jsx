@@ -5,12 +5,12 @@ import { uiActions } from "./uiaction-slice";
 // Async action to create a new query
 export const createQuery = (data) => {
     return async (dispatch) => {
-        dispatch(queryActions.fetchQueryStart());
-        dispatch(uiActions.toggleLoader());
+        // dispatch(queryActions.fetchQueryStart());
+        // dispatch(uiActions.toggleLoader());
 
         try {
             const response = await axiosInstance.post('/query', data);
-            dispatch(queryActions.fetchQuerySuccess(response.data.data));
+            // dispatch(queryActions.fetchQuerySuccess(response.data.data));
 
             // Optionally show success notification
             dispatch(uiActions.showNotification({
@@ -18,7 +18,7 @@ export const createQuery = (data) => {
                 message: "Query created successfully!"
             }));
         } catch (error) {
-            dispatch(queryActions.fetchQueryFailure(error?.response?.data?.message || error?.message));
+            // dispatch(queryActions.fetchQueryFailure(error?.response?.data?.message || error?.message));
             dispatch(uiActions.showNotification({
                 status: "failure",
                 message: error?.response?.data?.message || error?.message

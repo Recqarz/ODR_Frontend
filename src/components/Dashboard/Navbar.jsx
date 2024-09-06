@@ -36,17 +36,18 @@ import { toggleDrawer } from "../../store/drawerSlice";
 import { useNavigate } from "react-router-dom";
 import Arbitrator from "./Users/Arbitrator";
 import Dashboard from "./Dashboard";
-import ConsultationRequests from "./ConsultationRequests";
+import ConsultationRequests from "./ConsultationRequests/ConsultationRequests";
 import Clients from "./Users/Clients";
-import Cases from "./Cases";
-import Meetings from "./Meetings";
-import Tickets from "./Tickets";
-import Documents from "./Documents";
+import Cases from "./Cases/Cases";
+import Meetings from "./Meetings/Meetings";
+import Documents from "./Documents/Documents";
 import { Link } from "react-router-dom";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logout } from "../../store/user-actions";
+import Tickets from "./Tickets/Tickets";
+import CreateTickets from "./Tickets/CreateTickets";
 
 const drawerWidth = 240;
 
@@ -119,7 +120,7 @@ const Drawer = styled(MuiDrawer, {
 
 
 // Admin 
-const DrawerLists = [
+const adminDrawerLists = [
     {
         text: "Dashboard",
         icons: <HomeIcon />,
@@ -211,69 +212,69 @@ const DrawerLists = [
 ];
 
 // Arbitrator 
-// const DrawerLists = [
-//     {
-//         text: "Dashboard",
-//         icons: <HomeIcon />,
-//         navigate: "/dashboard",
-//         className:"active"
-//     },
-//     {
-//         text: "Cases",
-//         icons: <CaseIcon />,
-//         navigate: "/cases",
-//     },
-//     {
-//         text: "Meetings",
-//         icons: <MeetingIcon />,
-//         navigate: "/meetings",
-//     },
-//     {
-//         text: "Documents",
-//         icons: <DocumentIcon />,
-//         navigate: "/documents",
-//     },
-//     {
-//         text: "Tickets",
-//         icons: <TicketIcon />,
-//         navigate: "/tickets",
-//     },
-// ];
+const arbitratorDrawerLists = [
+    {
+        text: "Dashboard",
+        icons: <HomeIcon />,
+        navigate: "/dashboard",
+        className:"active"
+    },
+    {
+        text: "Cases",
+        icons: <CaseIcon />,
+        navigate: "/cases",
+    },
+    {
+        text: "Meetings",
+        icons: <MeetingIcon />,
+        navigate: "/meetings",
+    },
+    {
+        text: "Documents",
+        icons: <DocumentIcon />,
+        navigate: "/documents",
+    },
+    {
+        text: "Tickets",
+        icons: <TicketIcon />,
+        navigate: "/tickets",
+    },
+];
 
 // Client 
-// const DrawerLists = [
-//     {
-//         text: "Dashboard",
-//         icons: <HomeIcon />,
-//         navigate: "/dashboard",
-//         className:"active"
-//     },
-//     {
-//         text: "Cases",
-//         icons: <CaseIcon />,
-//         navigate: "/cases",
-//     },
-//     {
-//         text: "Meetings",
-//         icons: <MeetingIcon />,
-//         navigate: "/meetings",
-//     },
-//     {
-//         text: "Documents",
-//         icons: <DocumentIcon />,
-//         navigate: "/documents",
-//     },
-//     {
-//         text: "Tickets",
-//         icons: <TicketIcon />,
-//         navigate: "/tickets",
-//     },
-//     {
-//         text: "Consultation Requests",
-//         icons: <ConsultationIcon />,
-//         navigate: "/consultationrequests",
-//     },
-// ];
+const clientDrawerLists = [
+    {
+        text: "Dashboard",
+        icons: <HomeIcon />,
+        navigate: "/dashboard",
+        className:"active"
+    },
+    {
+        text: "Cases",
+        icons: <CaseIcon />,
+        navigate: "/cases",
+    },
+    {
+        text: "Meetings",
+        icons: <MeetingIcon />,
+        navigate: "/meetings",
+    },
+    {
+        text: "Documents",
+        icons: <DocumentIcon />,
+        navigate: "/documents",
+    },
+    {
+        text: "Tickets",
+        icons: <TicketIcon />,
+        navigate: "/tickets",
+    },
+    {
+        text: "Consultation Requests",
+        icons: <ConsultationIcon />,
+        navigate: "/consultationrequests",
+    },
+];
 
 const DrawerLists2 = [
     {
@@ -301,12 +302,7 @@ const DrawerLists2 = [
     },
 ];
 
-// Assuming settings is an array of objects with 'text' and 'action' properties
-const settings = [
-    { text: "Profile", action: () => console.log("Profile clicked") },
-    { text: "Account", action: () => console.log("Account clicked") },
-    { text: "Logout", action: () => console.log("Logout clicked") },
-];
+
 export default function Navbar() {
     const theme = useTheme();
     const open = useSelector((state) => state.drawer.isOpen)
@@ -316,13 +312,24 @@ export default function Navbar() {
 
     const [currentBar, setCurrentBar] = useState('/dashboard')
     const dispatch = useDispatch()
+    const role = useSelector(state => state.user.role) || JSON.parse(atob(localStorage.getItem("user") || "") || null);
+    let DrawerLists
+    if (role=='user') {
+         DrawerLists = clientDrawerLists
+    }
+    else if (role=='admin'){
+        DrawerLists = adminDrawerLists
+    }
+    else{
+        DrawerLists = arbitratorDrawerLists
 
+    }
     const history = useNavigate()
 
     const handleLogout = async (e) => {
     //   e.preventDefault()
       const allClear = await dispatch(logout())
-      if (allClear) history('/logout');
+      if (allClear) history('/');
   }
 
     const handleToggle = (itemText) => {
@@ -345,10 +352,22 @@ export default function Navbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
+    const setAddTicket = (e) =>{
+        e.preventDefault()
+        setCurrentBar('/addtickets')
+    }
     // Get username from localStorage
     const username = localStorage.getItem("username") ? JSON.parse(localStorage.getItem("username")) : "User";
-
+    // Assuming settings is an array of objects with 'text' and 'action' properties
+    const settings = [
+        { text: "Profile", action: () => console.log("Profile clicked") },
+        { text: "Account", action: () => console.log("Account clicked") },
+        { text: "Logout", action: async() => {
+            const allClear = await dispatch(logout())
+            if (allClear) history('/');
+                console.log("Logout clicked")} 
+            },
+    ];
 
     return (
         <>
@@ -561,8 +580,8 @@ export default function Navbar() {
                                 </Link>
                                 </div>
                             </li>
-                            <li>User 
-                            </li>
+                            {/* <li>User 
+                            </li> */}
                             <li>
                                 <div>
                                     <svg viewBox="0 0 24 44"><path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path></svg> 
@@ -590,7 +609,10 @@ export default function Navbar() {
                         <Meetings />
                     }
                     {currentBar == '/tickets' &&
-                        <Tickets />
+                        <Tickets setAddTicket = {setAddTicket} />
+                    }
+                    {currentBar == '/addtickets' &&
+                        <CreateTickets setCurrentBar = {setCurrentBar} />
                     }
                     {currentBar == '/consultationrequests' &&
                         <ConsultationRequests />

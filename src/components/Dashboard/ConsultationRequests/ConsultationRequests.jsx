@@ -8,22 +8,21 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllConsultations } from '../../store/consultation-action';
+import { getAllConsultations } from '../../../store/consultation-action';
 
 
 const consultationColumns = [
     { id: 'name', label: 'Name', minWidth: 170 },
     { id: 'email', label: 'Email', minWidth: 170 },
     { id: 'phone', label: 'Phone', minWidth: 130 },
-    // { id: 'state', label: 'State', minWidth: 130 },
-    // { id: 'city', label: 'City', minWidth: 130 },
-    // { id: 'pincode', label: 'Pincode', minWidth: 100 },
+    { id: 'state', label: 'State', minWidth: 130 },
+    { id: 'city', label: 'City', minWidth: 130 },
+    { id: 'pincode', label: 'Pincode', minWidth: 100 },
     { id: 'category', label: 'Category', minWidth: 130 },
-    // { id: 'defaulter_name', label: 'Defaulter Name', minWidth: 170 },
-    // { id: 'defaulter_email', label: 'Defaulter Email', minWidth: 170 },
+    { id: 'defaulter_name', label: 'Defaulter Name', minWidth: 170 },
+    { id: 'defaulter_email', label: 'Defaulter Email', minWidth: 170 },
     { id: 'createdAt', label: 'Created At', minWidth: 170 },
-    // { id: 'updatedAt', label: 'Updated At', minWidth: 170 },
-    { id: 'status', label: 'Status', minWidth: 170 },
+    { id: 'updatedAt', label: 'Updated At', minWidth: 170 },
 ];
 
 const ConsultationRequests = () => {
@@ -50,7 +49,7 @@ const ConsultationRequests = () => {
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             <TableContainer sx={{ maxHeight: 440 }}>
-                <Table className='user-table' stickyHeader aria-label="sticky table">
+                <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
                             {consultationColumns.map((column) => (
@@ -74,7 +73,7 @@ const ConsultationRequests = () => {
                                         return (
                                             <TableCell key={column.id} align={column.align || 'left'}>
                                                 {column.id === 'createdAt' || column.id === 'updatedAt'
-                                                    ? new Date(value).toDateString()
+                                                    ? new Date(value).toLocaleString()
                                                     : value}
                                             </TableCell>
                                         );

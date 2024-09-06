@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { createQuery } from '../../store/query-action';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import {ButtonGroup, FormControl, InputLabel, MenuItem, Paper, Select, Typography, } from "@mui/material";
 import Header from '../../pages/Header';
@@ -30,6 +29,13 @@ const Query = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createQuery(formData))
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            description: '',
+            category: ''
+        });
     };
 
     return (
@@ -86,49 +92,18 @@ const Query = () => {
                                 Select Category
                                 </InputLabel>
                                 <Select
-                                // labelId="demo-simple-select"
-                                // id="demo-simple-select"
                                 value={formData.category} label="Select Category"
                                 name="category" 
-                                //value={formData.category} 
                                 onChange={handleChange} required 
                                 >
-                                <MenuItem value={"Category 1"}>Category 1</MenuItem>
-                                <MenuItem value={"Category 2"}>Category 2</MenuItem>
-                                <MenuItem value={"Category 3"}>3</MenuItem>
+                                <MenuItem value={"Technical Issue"}>Technical Issue</MenuItem>
+                                <MenuItem value={"Dispute"}>Dispute</MenuItem>
+                                <MenuItem value={"General Inquiries"}>General Inquiries</MenuItem>
                                 </Select>
                             </FormControl>
                             <Button className='rg-btn left-eft' type="submit">Submit Query</Button>
                         </Box>
-                        {/* <form onSubmit={handleSubmit}>
-                            <div>
-                                <label>Name:</label>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-                            </div>
-                            <div>
-                                <label>Email:</label>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                            </div>
-                            <div>
-                                <label>Phone:</label>
-                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
-                            </div>
-                            <div>
-                                <label>Description:</label>
-                                <textarea name="description" value={formData.description} onChange={handleChange} required />
-                            </div>
-                            <div>
-                                <label>Category:</label>
-                                <select name="category" value={formData.category} onChange={handleChange} required >
-                                    <option value="">Select a category</option>
-                                    <option value="Category 1">Category 1</option>
-                                    <option value="Category 2">Category 2</option>
-                                    <option value="Category 3">Category 3</option>
-                                </select>
-                            </div>
-                            <button type="submit">Submit Query</button>
-                        </form> */}
-                        
+                       
                         </div>
                     </div>
                 </div>
