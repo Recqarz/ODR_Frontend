@@ -33,6 +33,8 @@ const Register = () => {
   const [mobileNumber, setMobileNumber] = useState(''); // Mobile number state
   const [role, setRole] = useState('user'); // Default role
   const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const [re, serRe] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,6 +46,12 @@ const Register = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     setPasswordMismatch(retypePassword && e.target.value !== retypePassword);
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (!passwordRegex.test(e.target.value)) {
+      serRe(true)
+    }else{
+      serRe(false)
+    }
   };
   const handleRetypePasswordChange = (e) => {
     setRetypePassword(e.target.value);
@@ -204,6 +212,8 @@ const Register = () => {
                     }}
                     id="password"
                     variant="standard"
+                    error={re}
+                    helperText={re ? 'Password must be at least 8 characters long and contain at least one number.' : ""}
                   />
                   <TextField
                     margin="normal"
